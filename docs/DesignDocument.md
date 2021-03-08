@@ -22,9 +22,9 @@
 
 ### Composite
 
-(gof card?)
-
 description of design pattern and its role in meeting system requirements
+
+(gof card?)
 
 (uml diagram)
 
@@ -32,9 +32,9 @@ description of design pattern and its role in meeting system requirements
 
 ### Strategy
 
-(gof card?)
-
 description of design pattern and its role in meeting system requirements
+
+(gof card?)
 
 (uml diagram)
 
@@ -42,11 +42,10 @@ description of design pattern and its role in meeting system requirements
 
 ### Command
 
-(gof card?)
-
 description of design pattern and its role in meeting system requirements
+
+(gof card?)
 
 (uml diagram)
 
 (sequence diagram)
-
