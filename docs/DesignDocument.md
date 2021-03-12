@@ -28,7 +28,9 @@ by the user based on what information the user requests for: whether it be artis
 3. The system tracks and persists the user’s personal library. It allows users to add songs or releases to their
 collection based on specific queries. 
 
-## Domain Model 
+## Domain Model
+
+![Domain Model](DomainModel.png)
 
 ## System Architecture
 
