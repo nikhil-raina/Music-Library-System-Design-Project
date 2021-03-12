@@ -1,5 +1,7 @@
 package ObjectModules;
 
+import java.util.Objects;
+
 public class Artist extends Media{
     private final String artistGUID;
     private final String artistName;
@@ -26,5 +28,18 @@ public class Artist extends Media{
     @Override
     public String toString() {
         return "Artist Name = " + getArtistName() + "\t";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return artistGUID.equals(artist.artistGUID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(artistGUID);
     }
 }
