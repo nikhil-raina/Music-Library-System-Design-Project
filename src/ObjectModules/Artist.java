@@ -3,18 +3,18 @@ package ObjectModules;
 import java.util.Objects;
 
 public class Artist extends Media{
-    private final String artistGUID;
+    private final String GUID;
     private final String artistName;
     private final String disambiguation;
 
-    public Artist(String artistGUID, String artistName, String disambiguation) {
-        this.artistGUID = artistGUID;
+    public Artist(String GUID, String artistName, String disambiguation) {
+        this.GUID = GUID;
         this.artistName = artistName;
         this.disambiguation = disambiguation;
     }
 
     public String getArtistGUID() {
-        return artistGUID;
+        return GUID;
     }
 
     public String getArtistName() {
@@ -35,11 +35,11 @@ public class Artist extends Media{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Artist artist = (Artist) o;
-        return artistGUID.equals(artist.artistGUID);
+        return getArtistGUID().equals(artist.getArtistGUID());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(artistGUID);
+        return Objects.hash(getArtistGUID());
     }
 }

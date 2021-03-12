@@ -41,11 +41,11 @@ public class Song extends Media {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Song song = (Song) o;
-        return GUID.equals(song.GUID) && songTitle.equals(song.songTitle);
+        return getGUID().equals(song.getGUID()) && getSongTitle().equals(song.getSongTitle());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(GUID, songTitle);
+        return Objects.hash(getGUID(), getSongTitle());
     }
 }
