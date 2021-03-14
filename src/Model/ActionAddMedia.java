@@ -1,32 +1,22 @@
 package Model;
 
 import ObjectModules.Response;
+import ObjectModules.mediaCollection;
 
 // Command Pattern: Concrete Command
 public class ActionAddMedia implements Request{
 
-    public ActionAddMedia () {
+    private String query;
+    private mediaCollection collection;
 
+    public ActionAddMedia(String query, mediaCollection collection) {
+        this.query = query;
+        this.collection = collection;
     }
 
     @Override
-    public void performRequest() {
+    public Response performRequest() {
 
-    }
-
-    @Override
-    public Response performRequest(String mediaType, String mediaName, String collectionName) {
         return null;
     }
-
-    @Override
-    public Response performRequest(String mediaType, String mediaName) {
-        return null;
-    }
-
-    @Override
-    public Response performRequest(String media) {
-        return null;
-    }
-
 }
