@@ -1,7 +1,6 @@
 package Model;
 
-// Command Pattern: Concrete Command
-public class ActionRateMedia implements Request {
+public class ActionShowCollection implements Request{
     @Override
     public void performRequest() {
 
@@ -16,6 +15,5 @@ public class ActionRateMedia implements Request {
     public Response performRequest(String media) {
         return null;
     }
-
 
 }
