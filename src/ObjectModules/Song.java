@@ -33,7 +33,7 @@ public class Song extends Media {
 
     @Override
     public String toString() {
-        return "Song Title = " + getSongTitle() + ", duration =" + getDuration();
+        return "Song Title = " + getSongTitle() + ", duration = " + getDuration();
     }
 
     @Override

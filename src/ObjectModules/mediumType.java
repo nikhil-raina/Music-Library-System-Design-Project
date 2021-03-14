@@ -8,4 +8,5 @@ public enum mediumType {
     VINYL_12,
     CASSETTE,
     ENHANCED_CD,
+    NO_TYPE
 }
