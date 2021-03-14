@@ -1,7 +1,14 @@
 package Model;
 
+import ObjectModules.Response;
+
 // Command Pattern: Concrete Command
 public class ActionAddMedia implements Request{
+
+    public ActionAddMedia () {
+
+    }
+
     @Override
     public void performRequest() {
 

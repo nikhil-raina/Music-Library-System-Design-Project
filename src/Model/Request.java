@@ -1,5 +1,7 @@
 package Model;
 
+import ObjectModules.Response;
+
 // Command Pattern: Command
 public interface Request {
     public void performRequest();
