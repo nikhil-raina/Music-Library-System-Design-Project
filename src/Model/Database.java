@@ -2,10 +2,11 @@ package Model;
 
 import helpers.csvReader;
 
-public class DB {
+// Command Pattern: Receiver
+public class Database {
     csvReader csvReader;
 
-    public DB() {
+    public Database() {
         csvReader = new csvReader();
         csvReader.populateDB();
     }
