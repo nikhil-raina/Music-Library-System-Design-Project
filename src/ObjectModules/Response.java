@@ -1,5 +1,7 @@
 package ObjectModules;
 
+import java.util.ArrayList;
+
 public class Response {
 
     private final String response;
@@ -10,5 +12,9 @@ public class Response {
 
     public String getResponse() {
         return response;
+    }
+
+    public String getResponse(ArrayList<Media> media) {
+        return "";
     }
 }
