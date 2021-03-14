@@ -1,8 +1,8 @@
-package Model;
+package ObjectModules;
 
 public class Response {
 
-    private String response;
+    private final String response;
 
     public Response(String message) {
         this.response = message;
