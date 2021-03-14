@@ -6,19 +6,24 @@ public class ActionHelp implements Request{
     public void performRequest() {
         System.out.println("\tcommands: \"add\", \"remove\", \"search\", \"rate\", \"create\", \"show\" \n" +
                 "\tmediaType: \"song\", \"artist\", \"release\"\n" +
-                "\tusage:\tadd  => add <mediaType> in <collection name> \n" +
-                "\t\t  remove => remove <mediaType> in <collection name> \n" +
-                "\t\t\t\t => remove <collection name> \n" +
-                "\t\t  search => search <mediaType> in <collection name> \n" +
-                "\t\t\t\t => search <mediaType> in database \n" +
-                "\t\t\trate => rate <mediaType> <song name>(only songs) \n" +
-                "\t\t  create => create <collection name> \n" +
-                "\t\t\tshow => show <collection name> \n"
+                "\tusage:\tadd  => add; <mediaType>; <media name>; <collection name> \n" +
+                "\t\t  remove => remove; <mediaType>; <media name>; <collection name> \n" +
+                "\t\t\t\t => remove; <collection name> \n" +
+                "\t\t  search => search; <mediaType>; <media name>; <collection name> \n" +
+                "\t\t\t\t => search; <mediaType>; database \n" +
+                "\t\t\trate => rate; <mediaType>; <song name>(only songs) \n" +
+                "\t\t  create => create; <collection name> \n" +
+                "\t\t\tshow => show; <collection name> \n"
                 );
     }
 
     @Override
-    public Response performRequest(String mediaType, String media) {
+    public Response performRequest(String mediaType, String mediaName, String collectionName) {
+        return null;
+    }
+
+    @Override
+    public Response performRequest(String mediaType, String mediaName) {
         return null;
     }
 

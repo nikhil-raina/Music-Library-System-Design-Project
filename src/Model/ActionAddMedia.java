@@ -8,7 +8,12 @@ public class ActionAddMedia implements Request{
     }
 
     @Override
-    public Response performRequest(String mediaType, String media) {
+    public Response performRequest(String mediaType, String mediaName, String collectionName) {
+        return null;
+    }
+
+    @Override
+    public Response performRequest(String mediaType, String mediaName) {
         return null;
     }
 
