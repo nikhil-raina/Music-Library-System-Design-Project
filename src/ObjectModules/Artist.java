@@ -2,7 +2,7 @@ package ObjectModules;
 
 import java.util.Objects;
 
-public class Artist extends Media{
+public class Artist extends Media {
     private final String GUID;
     private final String artistName;
     private final String disambiguation;

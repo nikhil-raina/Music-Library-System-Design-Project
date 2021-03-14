@@ -7,13 +7,13 @@ import java.util.List;
 // Command Pattern: Receiver
 public class Library implements LibraryElement {
 
-    private List<LibraryElement> elements = new ArrayList<LibraryElement>();
+    private List<LibraryElement> elements = new ArrayList<>();
 
-    public void add(LibraryElement element) {
+    public void addElement(LibraryElement element) {
         elements.add(element);
     }
 
-    public void remove(LibraryElement element) {
+    public void removeElement(LibraryElement element) {
         elements.remove(element);
     }
 
