@@ -36,8 +36,11 @@ public class Release extends Media {
             case "Cassette":
                 this.mediumType = ObjectModules.mediumType.CASSETTE;
                 break;
-            default:
+            case "Enhanced CD":
                 this.mediumType = ObjectModules.mediumType.ENHANCED_CD;
+                break;
+            default:
+                this.mediumType = ObjectModules.mediumType.NO_TYPE;
                 break;
         }
     }
