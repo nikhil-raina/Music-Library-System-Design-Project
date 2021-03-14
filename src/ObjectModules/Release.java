@@ -74,6 +74,9 @@ public class Release extends Media {
         System.out.println("Release: " + getReleaseTitle() + ", songs:");
         int index = 1;
         for (Song song : getSongList()) {
+            if(song == null){
+                break;
+            }
             System.out.println(index + ". " + song.toString());
             index++;
         }
