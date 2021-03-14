@@ -10,4 +10,28 @@ public class Database {
         csvReader = new csvReader();
         csvReader.populateDB();
     }
+
+    public Response ActionAddMedia(String media) {
+        return new Response("");
+    }
+
+    public Response ActionSearchMedia(String media) {
+        return new Response("");
+    }
+
+    public Response ActionRemoveMedia(String media) {
+        return new Response("");
+    }
+
+    public Response ActionRateMedia(String media) {
+        return new Response("");
+    }
+
+    public Response ActionHelp(String media) {
+        return new Response("");
+    }
+
+    public Response ActionCreateCollection(String media) {
+        return new Response("");
+    }
 }
