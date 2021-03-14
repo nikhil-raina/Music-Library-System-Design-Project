@@ -28,7 +28,8 @@ public class MMLS {
                     System.exit(0);
                     break;
                 case "help":
-                    new ActionHelp().performRequest();
+                    response = new ActionHelp().performRequest();
+                    System.out.println(response.getResponse());
                     break;
                 default:
                     response = requestHandler.handleRequest(command, collection);
