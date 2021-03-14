@@ -11,7 +11,7 @@ public class Release extends Media {
     private final mediumType mediumType;
     private final List<Song> songList;
 
-    public Release(String guid, String artistGUID, String releaseTitle, String issueDate, String mediumType, List<Song> songList) {
+    public Release(String guid, String artistGUID, String releaseTitle, String mediumType, String issueDate, List<Song> songList) {
         this.GUID = guid;
         this.artistGUID = artistGUID;
         this.releaseTitle = releaseTitle;
