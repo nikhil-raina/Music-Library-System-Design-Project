@@ -1,21 +1,24 @@
 package ObjectModules;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class Release extends Media {
+public class Release implements LibraryElement {
     private final String GUID;
     private final String artistGUID;
     private final String releaseTitle;
-    private final String issueDate;
+    private final Date issueDate;
     private final mediumType mediumType;
     private final List<Song> songList;
 
-    public Release(String guid, String artistGUID, String releaseTitle, String mediumType, String issueDate, List<Song> songList) {
+    public Release(String guid, String artistGUID, String releaseTitle, String mediumType, String issueDate, List<Song> songList) throws ParseException {
         this.GUID = guid;
         this.artistGUID = artistGUID;
         this.releaseTitle = releaseTitle;
-        this.issueDate = issueDate;
+        this.issueDate = new SimpleDateFormat("yyyy-mm-dd").parse(issueDate);
         this.songList = songList;
         switch (mediumType) {
             case "Digital Media":
@@ -57,21 +60,33 @@ public class Release extends Media {
         return artistGUID;
     }
 
-    public String getReleaseTitle() {
+    public String getTitle() {
         return releaseTitle;
     }
 
-    public String getIssueDate() {
+    public Date getIssueDate() {
         return issueDate;
     }
 
-    public ObjectModules.mediumType getMediumType() {
+    public ObjectModules.mediumType getMedia() {
         return mediumType;
+    }
+
+    public int getDuration() {
+        int total = 0;
+        for (int i = 0; i < songList.size(); i++) {
+            total += songList.get(i).getDuration();
+        }
+        return total;
+    }
+
+    public float getRating() {
+        return 0;
     }
 
     @Override
     public String toString() {
-        System.out.println("Release: " + getReleaseTitle() + ", songs:");
+        System.out.println("Release: " + getTitle() + ", songs:");
         int index = 1;
         for (Song song : getSongList()) {
             if(song == null){
