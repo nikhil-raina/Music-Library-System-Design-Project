@@ -31,6 +31,8 @@ public class RequestHandler {
             case "show" :
                 request = new ActionShowCollection(query, collection);
         }
+
+        assert request != null;
         return request.performRequest();
     }
 }
