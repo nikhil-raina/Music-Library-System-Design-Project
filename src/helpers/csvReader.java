@@ -31,6 +31,18 @@ public class csvReader {
         }
     }
 
+    public static HashMap<String, Artist> getArtistList() {
+        return artistList;
+    }
+
+    public static HashMap<String, Release> getReleaseList() {
+        return releaseList;
+    }
+
+    public static HashMap<String, Song> getSongList() {
+        return songList;
+    }
+
     public void readArtistFile (File file) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
