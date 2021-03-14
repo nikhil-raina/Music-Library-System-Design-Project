@@ -1,5 +1,6 @@
 package Model;
 
+// Command Pattern: Concrete Command
 public class ActionRemoveMedia implements Request {
     @Override
     public void performRequest() {
