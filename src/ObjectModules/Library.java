@@ -1,8 +1,6 @@
 package ObjectModules;
-import java.util.ArrayList;
-import java.util.Scanner;  
-import java.io.*;
 
-public class Library{
+// Command Pattern: Receiver
+public class Library extends mediaCollection {
 
 }
