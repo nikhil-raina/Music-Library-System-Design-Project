@@ -1,5 +1,8 @@
 import Controller.RequestHandler;
 import Model.*;
+import ObjectModules.Library;
+import ObjectModules.Response;
+import ObjectModules.mediaCollection;
 
 import java.util.Scanner;
 
@@ -7,6 +10,8 @@ public class MMLS {
 
     public static void main(String[] args) {
         Database db = new Database();
+        Library library = new Library();
+        mediaCollection collection = new mediaCollection(db, library);
         RequestHandler requestHandler = new RequestHandler();
         Response response;
 
@@ -26,7 +31,7 @@ public class MMLS {
                     new ActionHelp().performRequest();
                     break;
                 default:
-                    response = requestHandler.handleRequest(command, db);
+                    response = requestHandler.handleRequest(command, collection);
                     System.out.println(response.getResponse());
                     break;
             }
