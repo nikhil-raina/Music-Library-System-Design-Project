@@ -58,6 +58,10 @@ public class MMLS {
         while (true) {
             System.out.print("> ");
             String command = scan.nextLine();
+            if (!command.contains(";")){
+                System.out.println("Add ';' with the command. Type 'help;' for more details");
+                continue;
+            }
             String[] commandStream = command.split(";");
             switch (commandStream[0]) {
                 case "exit":
