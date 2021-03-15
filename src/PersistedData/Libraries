@@ -1,0 +1,18 @@
+{
+  "ID": 0,
+  "userName": "brandon",
+  "library": {
+    "elements": [
+      {
+        "GUID": "c1f41984-2bb1-49bd-9e8a-9bdc5161b9c1",
+        "artistGUID": "420e923e-e74c-42ef-b771-2e2bcee93394",
+        "durationMilliSeconds": 266373,
+        "songTitle": "Where I Live",
+        "rating": 4.0
+      }
+    ]
+  },
+  "db": {
+    "csvReader": {}
+  }
+}

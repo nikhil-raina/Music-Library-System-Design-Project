@@ -7,6 +7,7 @@ import ObjectModules.Song;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class csvReader {
@@ -31,15 +32,15 @@ public class csvReader {
         }
     }
 
-    public static HashMap<String, Artist> getArtistList() {
+    public HashMap<String, Artist> getArtistList() {
         return artistList;
     }
 
-    public static HashMap<String, Release> getReleaseList() {
+    public HashMap<String, Release> getReleaseList() {
         return releaseList;
     }
 
-    public static HashMap<String, Song> getSongList() {
+    public HashMap<String, Song> getSongList() {
         return songList;
     }
 
@@ -81,7 +82,17 @@ public class csvReader {
                     Song song = songList.get(data[idx]);
                     songs.add(song);
                 }
-                releaseList.put(data[0], new Release(data[0], data[1], data[2], data[3], data[4], songs));
+                Date date;
+                if (data[4].length() == 4) {
+                    date = new SimpleDateFormat("yyyy").parse(data[4]);
+                } else if (data[4].length() == 7) {
+                    date = new SimpleDateFormat("yyyy-mm").parse(data[4]);
+                } else if (data[4].length() == 10) {
+                    date = new SimpleDateFormat("yyyy-mm-dd").parse(data[4]);
+                } else {
+                    date = new Date();
+                }
+                releaseList.put(data[0], new Release(data[0], data[1], data[2], data[3], date, songs));
             }
 
             br.close();
