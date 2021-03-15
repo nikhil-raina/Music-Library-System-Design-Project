@@ -96,6 +96,8 @@ public class Library implements LibraryElement {
         for (LibraryElement e: elements) {
             ret += "Title: " + e.getTitle() + "\tDuration: " + e.getDuration() + "\tRating: " + e.getRating() + "\n";
         }
+        if(ret.length() == 0)
+            return new Response("No media in the library");
         return new Response(ret);
     }
 
