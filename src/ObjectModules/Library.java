@@ -91,10 +91,12 @@ public class Library implements LibraryElement {
         return returnList;
     }
 
-    public void display() {
+    public Response display() {
+        String ret = "";
         for (LibraryElement e: elements) {
-            System.out.println("Title: " + e.getTitle() + "\tDuration: " + e.getDuration() + "\tRating: " + e.getRating());
+            ret += "Title: " + e.getTitle() + "\tDuration: " + e.getDuration() + "\tRating: " + e.getRating() + "\n";
         }
+        return new Response(ret);
     }
 
     public List<LibraryElement> getElements() {

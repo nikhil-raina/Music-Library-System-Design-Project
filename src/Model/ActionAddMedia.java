@@ -43,7 +43,7 @@ public class ActionAddMedia implements Request{
                     }
                 }
                 if (guid.equals("ERROR")) {
-                    System.out.println("Error - Enter valid song name");
+                    return new Response("Error - Enter valid song name");
                 } else {
                     this.library.addMedia(new Song(guid, artistGUID, durationMilliSeconds, songTitle));
                 }
@@ -66,7 +66,7 @@ public class ActionAddMedia implements Request{
                     }
                 }
                 if (guid.equals("ERROR")) {
-                    System.out.println("Error - Enter valid release name");
+                    return new Response("Error - Enter valid release name");
                 } else {
                     this.library.addMedia(new Release(guid, artistGUID, releaseTitle, mediumType, issueDate, songList));
                 }

@@ -9,6 +9,13 @@
         "durationMilliSeconds": 266373,
         "songTitle": "Where I Live",
         "rating": 4.0
+      },
+      {
+        "GUID": "c93d771b-a673-451e-ba57-cb7a59d5933f",
+        "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+        "durationMilliSeconds": 233000,
+        "songTitle": "Where Would I Be?",
+        "rating": 0.0
       }
     ]
   },

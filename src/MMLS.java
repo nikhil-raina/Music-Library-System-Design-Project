@@ -75,7 +75,7 @@ public class MMLS {
                     break;
                 default:
                     response = requestHandler.handleRequest(command);
-                    // System.out.println(response.getResponse());
+                    System.out.println(response.getResponse());
                     break;
             }
         }

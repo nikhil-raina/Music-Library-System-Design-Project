@@ -62,6 +62,6 @@ public class ActionRemoveMedia implements Request {
                 }
                 this.library.removeMedia(new Release(guid, artistGUID, releaseTitle, mediumType, issueDate, songList));
         }
-        return  new Response("Media removed!");
+        return new Response("Media removed!");
     }
 }

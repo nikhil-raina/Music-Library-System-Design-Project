@@ -24,7 +24,6 @@ public class ActionSearchMedia implements Request{
 
         String command = query.substring(0, (query.indexOf(";")));
         String req = query.substring((query.indexOf(";") + 1));
-
         switch (command) {
             case "song":
                 for (Song s : db.csvReader.getSongList().values()) {
@@ -46,14 +45,14 @@ public class ActionSearchMedia implements Request{
 //                }
 //                break;
             default:
-                System.out.println("usage: search => search; <song,artist,release>; <media name>");
+                return new Response("usage: search => search; <song,artist,release>; <media name>");
 
         }
         searchedElements.sort((o1, o2) -> o2.getTitle().compareTo(o2.getTitle()));
-        System.out.println("printing results...");
+        String ret = "printing results...\n";
         for (LibraryElement e: searchedElements) {
-            System.out.println(e.toString());
+            ret += e.toString() + "\n";
         }
-        return null;
+        return new Response(ret);
     }
 }
