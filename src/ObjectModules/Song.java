@@ -8,7 +8,7 @@ public class Song implements LibraryElement {
     private final String artistGUID;
     private final int durationMilliSeconds;
     private final String songTitle;
-    private final float rating;
+    private float rating;
 
     public Song(String guid, String artistGUID, int durationMilliSeconds, String songTitle) {
         this.GUID = guid;
@@ -40,6 +40,10 @@ public class Song implements LibraryElement {
 
     public float getRating() {
         return this.rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     @Override

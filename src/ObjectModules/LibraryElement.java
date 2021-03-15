@@ -9,4 +9,5 @@ public interface LibraryElement {
     public float getRating();
     public Date getIssueDate();
     public ObjectModules.mediumType getMedia();
+    public void setRating(float rating);
 }

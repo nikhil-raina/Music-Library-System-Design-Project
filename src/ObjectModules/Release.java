@@ -1,7 +1,6 @@
 package ObjectModules;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -14,11 +13,21 @@ public class Release implements LibraryElement {
     private final mediumType mediumType;
     private final List<Song> songList;
 
-    public Release(String guid, String artistGUID, String releaseTitle, String mediumType, String issueDate, List<Song> songList) throws ParseException {
+    public Release(String guid, String artistGUID, String releaseTitle, String mediumType, Date issueDate, List<Song> songList) throws ParseException {
+        Date issueDate1;
         this.GUID = guid;
         this.artistGUID = artistGUID;
         this.releaseTitle = releaseTitle;
-        this.issueDate = new SimpleDateFormat("yyyy-mm-dd").parse(issueDate);
+
+//        if (issueDate.length() == 4) {
+//            issueDate1 = new SimpleDateFormat("yyyy").parse(issueDate);
+//        } else if (issueDate.length() == 7) {
+//            issueDate1 = new SimpleDateFormat("yyyy-mm").parse(issueDate);
+//        } else {
+//            issueDate1 = new SimpleDateFormat("yyyy-mm-dd").parse(issueDate);
+//        }
+
+        this.issueDate = issueDate;
         this.songList = songList;
         switch (mediumType) {
             case "Digital Media":
@@ -71,6 +80,9 @@ public class Release implements LibraryElement {
     public ObjectModules.mediumType getMedia() {
         return mediumType;
     }
+
+    @Override
+    public void setRating(float rating) { }
 
     public int getDuration() {
         int total = 0;
