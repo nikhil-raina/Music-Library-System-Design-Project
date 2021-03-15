@@ -41,7 +41,6 @@ public class MMLS {
 
         // Collect username and check to see if library exists for specified username
         Map<?,?> listUsernames = gson.fromJson(reader, Map.class);
-        boolean libraryExists;
         if(listUsernames == null) {
             user = new User(0, username);
         } else if (listUsernames.containsValue(username)) {
