@@ -56,46 +56,18 @@ public class Library implements LibraryElement {
         elements.remove(release);
     }
 
-    public void rateMedia(Song song, float rating) {
-        song.setRating(rating);
-    }
-
-    public void rateMedia(Release release, float rating) {
-        release.setRating(rating);
-    }
-
-    public List<LibraryElement> searchMedia(String query) {
-        String command = query.substring(0, (query.indexOf(";")));
-        String req = query.substring((query.indexOf(";") + 1));
-        List<LibraryElement> returnList = new ArrayList<>();
-        switch (command) {
-            case "song":
-            case "release":
-                for (LibraryElement element : elements) {
-                    if (element.getTitle().contains(req) || element.getArtistGUID().contains(req) ||
-                            element.getRating() >= Integer.parseInt(req) ||
-                            element.getDuration() >= Integer.parseInt(req))
-                        returnList.add(element);
-                }
-                break;
-            case "artist":
-                for (LibraryElement element : elements) {
-                    if (element.getArtistGUID().contains(req) || element.getRating() >= Integer.parseInt(req))
-                        returnList.add(element);
-                }
-                break;
-            default:
-                System.out.println("usage: search => search; <song,artist,release>; <media name>");
-
-        }
-        returnList.sort((o1, o2) -> o2.getTitle().compareTo(o2.getTitle()));
-        return returnList;
-    }
-
     public Response display() {
         StringBuilder ret = new StringBuilder();
         for (LibraryElement e: elements) {
             ret.append("Title: ").append(e.getTitle()).append("\tDuration: ").append(e.getDuration()).append("\tRating: ").append(e.getRating()).append("\n");
+            if (e instanceof Release) {
+                int idx = 1;
+                Release release = (Release) e;
+                for (Song song: release.getSongList()) {
+                    ret.append("\t").append(idx).append(". ").append("Title: ").append(song.getTitle()).append("\tDuration: ").append(song.getDuration()).append("\tRating: ").append(song.getRating()).append("\n");
+                    idx++;
+                }
+            }
         }
         if(ret.length() == 0)
             return new Response("No media in the library");
