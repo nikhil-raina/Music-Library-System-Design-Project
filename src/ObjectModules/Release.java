@@ -14,7 +14,6 @@ public class Release implements LibraryElement {
     private final List<Song> songList;
 
     public Release(String guid, String artistGUID, String releaseTitle, String mediumType, Date issueDate, List<Song> songList) throws ParseException {
-        Date issueDate1;
         this.GUID = guid;
         this.artistGUID = artistGUID;
         this.releaseTitle = releaseTitle;
