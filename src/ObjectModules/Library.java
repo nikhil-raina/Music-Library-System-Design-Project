@@ -93,13 +93,13 @@ public class Library implements LibraryElement {
     }
 
     public Response display() {
-        String ret = "";
+        StringBuilder ret = new StringBuilder();
         for (LibraryElement e: elements) {
-            ret += "Title: " + e.getTitle() + "\tDuration: " + e.getDuration() + "\tRating: " + e.getRating() + "\n";
+            ret.append("Title: ").append(e.getTitle()).append("\tDuration: ").append(e.getDuration()).append("\tRating: ").append(e.getRating()).append("\n");
         }
         if(ret.length() == 0)
             return new Response("No media in the library");
-        return new Response(ret);
+        return new Response(ret.toString());
     }
 
     public List<LibraryElement> getElements() {
