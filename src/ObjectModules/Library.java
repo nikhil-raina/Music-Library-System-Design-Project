@@ -33,7 +33,7 @@ public class Library implements LibraryElement {
     }
 
     @Override
-    public ObjectModules.mediumType getMedia() {
+    public MediumType getMedia() {
         return null;
     }
 

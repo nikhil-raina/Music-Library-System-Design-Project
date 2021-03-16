@@ -8,6 +8,6 @@ public interface LibraryElement {
     public int getDuration();
     public float getRating();
     public Date getIssueDate();
-    public ObjectModules.mediumType getMedia();
+    public MediumType getMedia();
     public void setRating(float rating);
 }

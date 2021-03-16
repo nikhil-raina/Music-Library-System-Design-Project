@@ -7,21 +7,23 @@ public class User {
     public int ID;
     public String userName;
     public Request request;
-    private Library library;
-    private Database db;
+    private MediaCollection collection;
 
-
+    // new user
     public User(int ID, String userName) {
         this.ID = ID;
         this.userName = userName;
-        this.library = new Library();
-        this.db = new Database();
+        this.collection = new MediaCollection(new Library(), new Database());
     }
 
+    // old user
     public User(int ID, String userName, Library library) {
         this.ID = ID;
         this.userName = userName;
-        this.library = library;
+    }
+
+    public MediaCollection getCollection() {
+        return collection;
     }
 
     public String getUserName(){
@@ -33,10 +35,10 @@ public class User {
     }
 
     public Library getLibrary() {
-        return library;
+        return getCollection().getLibrary();
     }
 
     public Database getDb() {
-        return db;
+        return getCollection().getDb();
     }
 }
