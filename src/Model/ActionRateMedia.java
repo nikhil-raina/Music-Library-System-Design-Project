@@ -8,28 +8,30 @@ import java.text.ParseException;
 public class ActionRateMedia implements Request {
 
     private String query;
-    private Library library;
-    private Database db;
+    private MediaCollection collection;
 
-    public ActionRateMedia(String query, Library library, Database db) {
+    public ActionRateMedia(String query, MediaCollection collection) {
         this.query = query;
-        this.library = library;
-        this.db = db;
+        this.collection = collection;
     }
 
     @Override
     public Response performRequest() throws ParseException {
-        String command = query.substring(0, (query.indexOf(";")));
+        Library library = this.collection.getLibrary();
         String req = query.substring((query.indexOf(";") + 1));
         String name = req.substring(0, (req.indexOf(";")));
         float rating = Float.parseFloat(req.substring(req.indexOf(";") + 1));
+        boolean didRate = false;
 
-        Song rateThisSong = null;
-        for (LibraryElement s : this.library.getElements()) {
+        for (LibraryElement s : library.getElements()) {
             if (s.getTitle().equals(name)) {
+                didRate = true;
                 s.setRating(rating);
             }
         }
-        return  new Response("Media rated!");
+        if (didRate)
+            return new Response("Media rated!");
+        else
+            return new Response("Sorry, media not in the Database...");
     }
 }
