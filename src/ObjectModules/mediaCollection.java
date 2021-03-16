@@ -1,20 +1,31 @@
 package ObjectModules;
 
+import Model.Database;
+
 public class mediaCollection {
 
     private Library library;
-    private User user;
+    private Database db;
 
-    public mediaCollection (User user) {
-        this.user = user;
-        this.library = new Library();
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
+
+    public void setDb(Database db) {
+        this.db = db;
+    }
+
+    public mediaCollection(Library library, Database db) {
+        this.library = library;
+        this.db = db;
+    }
+
+    public Database getDb() {
+        return db;
     }
 
     public Library getLibrary() {
         return library;
     }
 
-    public User getUser() {
-        return user;
-    }
 }
