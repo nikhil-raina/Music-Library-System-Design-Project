@@ -1,6 +1,5 @@
 import Controller.RequestHandler;
 import Model.ActionHelp;
-import Model.Database;
 import ObjectModules.Library;
 import ObjectModules.Response;
 import ObjectModules.User;
@@ -20,7 +19,6 @@ import java.util.Scanner;
 public class MMLS {
 
     public static void main(String[] args) throws IOException, ParseException {
-        Database db = new Database();
         Scanner scan = new Scanner(System.in);
         File file = new File("src/PersistedData/Libraries");
         FileWriter fileWriter = new FileWriter(file);
@@ -41,14 +39,13 @@ public class MMLS {
 
         // Collect username and check to see if library exists for specified username
         Map<?,?> listUsernames = gson.fromJson(reader, Map.class);
-        boolean libraryExists;
-        if(listUsernames == null) {
+        if (listUsernames == null || !listUsernames.containsValue(username)) {
+            // new user
             user = new User(0, username);
-        } else if (listUsernames.containsValue(username)) {
-            user = new User(0, username, new Library());    // placeholder - replace new library with parsed values
-                                                                // from Libraries file
         } else {
-            user = new User(0, username);
+            // old user
+            // constructor needs to be changed accordingly
+            user = new User(0, username, new Library());    // placeholder - replace new library with parsed values from Libraries file
         }
 
         RequestHandler requestHandler = new RequestHandler(user.getLibrary(), user.getDb());
@@ -59,6 +56,10 @@ public class MMLS {
         while (true) {
             System.out.print("> ");
             String command = scan.nextLine();
+            if (!command.contains(";")){
+                System.out.println("Add ';' with the command. Type 'help;' for more details");
+                continue;
+            }
             String[] commandStream = command.split(";");
             switch (commandStream[0]) {
                 case "exit":

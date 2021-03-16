@@ -1,66 +1,64 @@
 package Model;
 
-import ObjectModules.Library;
-import ObjectModules.Release;
-import ObjectModules.Response;
-import ObjectModules.Song;
+import ObjectModules.*;
 
 import java.text.ParseException;
-import java.util.Date;
-import java.util.List;
 
 // Command Pattern: Concrete Command
 public class ActionRemoveMedia implements Request {
 
     private String query;
-    private Library library;
-    private Database db;
+    private MediaCollection collection;
 
-    public ActionRemoveMedia(String query, Library library, Database db) {
+    public ActionRemoveMedia(String query, MediaCollection collection) {
         this.query = query;
-        this.library = library;
-        this.db = db;
+        this.collection = collection;
     }
 
     @Override
     public Response performRequest() throws ParseException {
+        Database db = this.collection.getDb();
+        Library library = this.collection.getLibrary();
         String command = query.substring(0, (query.indexOf(";")));
         String req = query.substring((query.indexOf(";") + 1));
 
         // NEED TO CHANGE REQ SO ITS KEY OF SONG FOR PROPER FUNCTIONALITY
         switch (command) {
             case "song":
-                String guid = "ERROR";
-                String artistGUID = "ERROR";
-                int durationMilliSeconds = -1;
-                String songTitle = "ERROR";
-                for (Song s : db.csvReader.getSongList().values()) {
-                    if (s.getTitle().equals(req)) {
-                        guid = s.getGUID();
-                        artistGUID = s.getArtistGUID();
-                        durationMilliSeconds = s.getDuration();
-                        songTitle = s.getTitle();
+                for (LibraryElement element : library.getElements()) {
+                    boolean found = false;
+                    if (element instanceof Release) {
+                        for (Song song: ((Release) element).getSongList()) {
+                            if (song.getTitle().equals(req)) {
+                                library.removeMedia(song);
+                                ((Release) element).getSongList().remove(song);
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (found) {
+                        break;
+                    }
+                    if (element.getTitle().equals(req)) {
+                        Song song = (Song) element;
+                        library.removeMedia(song);
+                        break;
                     }
                 }
-                this.library.removeMedia(new Song(guid, artistGUID, durationMilliSeconds, songTitle));
+                break;
+
             case "release":
-                guid = "ERROR";
-                artistGUID = "ERROR";
-                String releaseTitle = "ERROR";
-                String mediumType = "ERROR";
-                Date issueDate = new Date();
-                List<Song> songList = null;
-                for (Release r : db.csvReader.getReleaseList().values()) {
-                    if (r.getTitle().equals(req)) {
-                        guid = r.getGUID();
-                        artistGUID = r.getArtistGUID();
-                        releaseTitle = r.getTitle();
-                        mediumType = r.getMedia().toString();
-                        issueDate = r.getIssueDate();
-                        songList = r.getSongList();
+                for (Release release : db.getReleaseList().values()) {
+                    if (release.getTitle().equals(req)) {
+                        library.removeMedia(release);
+                        break;
                     }
                 }
-                this.library.removeMedia(new Release(guid, artistGUID, releaseTitle, mediumType, issueDate, songList));
+                break;
+
+            default:
+                return new Response("Error while entering media type. Type 'help;' for more details");
         }
         return new Response("Media removed!");
     }

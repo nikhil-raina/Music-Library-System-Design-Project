@@ -1,37 +1,36 @@
 package Model;
 
+import ObjectModules.Artist;
+import ObjectModules.Release;
 import ObjectModules.Response;
+import ObjectModules.Song;
 import helpers.csvReader;
 
+import java.util.HashMap;
+
 public class Database {
-    csvReader csvReader;
+    private HashMap<String, Artist> artistList;
+    private HashMap<String, Release> releaseList;
+    private HashMap<String, Song> songList;
+
 
     public Database() {
-        csvReader = new csvReader();
+        csvReader csvReader = new csvReader();
         csvReader.populateDB();
+        this.artistList = csvReader.getArtistList();
+        this.releaseList = csvReader.getReleaseList();
+        this.songList = csvReader.getSongList();
     }
 
-    public Response ActionAddMedia(String media) {
-        return new Response("");
+    public HashMap<String, Artist> getArtistList() {
+        return artistList;
     }
 
-    public Response ActionSearchMedia(String media) {
-        return new Response("");
+    public HashMap<String, Release> getReleaseList() {
+        return releaseList;
     }
 
-    public Response ActionRemoveMedia(String media) {
-        return new Response("");
-    }
-
-    public Response ActionRateMedia(String media) {
-        return new Response("");
-    }
-
-    public Response ActionHelp(String media) {
-        return new Response("");
-    }
-
-    public Response ActionCreateCollection(String media) {
-        return new Response("");
+    public HashMap<String, Song> getSongList() {
+        return songList;
     }
 }

@@ -2,57 +2,42 @@ package Model;
 
 import ObjectModules.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 // Command Pattern: Concrete Command
 public class ActionSearchMedia implements Request{
 
     private String query;
-    private Library library;
-    private Database db;
+    private MediaCollection collection;
 
-    public ActionSearchMedia(String query, Library library, Database db) {
+    public ActionSearchMedia(String query, MediaCollection collection) {
         this.query = query;
-        this.library = library;
-        this.db = db;
+        this.collection = collection;
     }
 
     @Override
     public Response performRequest() {
-        List<LibraryElement> searchedElements = new ArrayList<>();
-
-        String command = query.substring(0, (query.indexOf(";")));
-        String req = query.substring((query.indexOf(";") + 1));
-        switch (command) {
+        Response response = new Response();
+        MediaList mediaList;
+        String mediaType = query.substring(0, (query.indexOf(";")));
+        String mediaName = query.substring((query.indexOf(";") + 1));
+        Object collection = this.collection.getLibrary();
+        if (mediaName.contains(";")) {
+            collection = this.collection.getDb();
+            mediaName = mediaName.substring(0, mediaName.indexOf(";"));
+        }
+        switch (mediaType) {
             case "song":
-                for (Song s : db.csvReader.getSongList().values()) {
-                    if (s.getTitle().contains(req)) {
-                        searchedElements.add(s);
-                    }
-                }
-            case "release":
-                for (Release r : db.csvReader.getReleaseList().values()) {
-                    if (r.getTitle().contains(req)) {
-                        searchedElements.add(r);
-                    }
-                }
+                mediaList = new MediaList(new SearchBySong(), mediaName, collection);
                 break;
-//            case "artist": NEED TO IMPLEMENT SEARCHING BY ARTIST
-//                for (Artist a : db.csvReader.getArtistList().values()) {
-//                    if (a.getArtistGUID().contains(req) || a.getArtistName().contains(req))
-//                        searchedElements.add(a.get);
-//                }
-//                break;
+            case "release":
+                mediaList = new MediaList(new SearchByRelease(), mediaName, collection);
+                break;
+            case "artist":
+                mediaList = new MediaList(new SearchByArtist(), mediaName, collection);
+                break;
             default:
-                return new Response("usage: search => search; <song,artist,release>; <media name>");
-
+                return new Response("Error while entering media type. Type 'help;' for more details");
         }
-        searchedElements.sort((o1, o2) -> o2.getTitle().compareTo(o2.getTitle()));
-        String ret = "printing results...\n";
-        for (LibraryElement e: searchedElements) {
-            ret += e.toString() + "\n";
-        }
-        return new Response(ret);
+        response.makeResponse(mediaList.search());
+        return response;
     }
 }

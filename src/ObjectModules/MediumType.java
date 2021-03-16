@@ -1,6 +1,6 @@
 package ObjectModules;
 
-public enum mediumType {
+public enum MediumType {
     DIGITAL_MEDIA,
     CD,
     VINYL,

@@ -1,23 +1,21 @@
 package Model;
 
-import ObjectModules.Library;
+import ObjectModules.MediaCollection;
 import ObjectModules.Response;
 
 // Command Pattern: Concrete Command
 public class ActionShowCollection implements Request{
 
     private String query;
-    private Library library;
-    private Database db;
+    private MediaCollection collection;
 
-    public ActionShowCollection(String query, Library library, Database db) {
+    public ActionShowCollection(String query, MediaCollection collection) {
         this.query = query;
-        this.library = library;
-        this.db = db;
+        this.collection = collection;
     }
 
     @Override
     public Response performRequest() {
-        return this.library.display();
+        return this.collection.getLibrary().display();
     }
 }

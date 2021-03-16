@@ -1,77 +1,48 @@
 package Model;
 
-import ObjectModules.Library;
-import ObjectModules.Release;
-import ObjectModules.Response;
-import ObjectModules.Song;
+import ObjectModules.*;
 
 import java.text.ParseException;
-import java.util.Date;
-import java.util.List;
 
 // Command Pattern: Concrete Command
 public class ActionAddMedia implements Request{
 
     private String query;
-    private Library library;
-    private Database db;
+    private MediaCollection collection;
 
-    public ActionAddMedia(String query, Library library, Database db) {
+    public ActionAddMedia(String query, MediaCollection collection) {
         this.query = query;
-        this.library = library;
-        this.db = db;
+        this.collection = collection;
     }
 
     @Override
     public Response performRequest() throws ParseException {
+        Database db = this.collection.getDb();
+        Library library = this.collection.getLibrary();
         String command = query.substring(0, (query.indexOf(";")));
         String req = query.substring((query.indexOf(";") + 1));
 
         // NEED TO CHANGE REQ SO ITS KEY OF SONG FOR PROPER FUNCTIONALITY
         switch (command) {
             case "song":
-                String guid = "ERROR";
-                String artistGUID = "ERROR";
-                int durationMilliSeconds = -1;
-                String songTitle = "ERROR";
-                for (Song s : db.csvReader.getSongList().values()) {
-                    if (s.getTitle().equals(req)) {
-                        guid = s.getGUID();
-                        artistGUID = s.getArtistGUID();
-                        durationMilliSeconds = s.getDuration();
-                        songTitle = s.getTitle();
+                for (Song song : db.getSongList().values()) {
+                    if (song.getTitle().equals(req)) {
+                        library.addMedia(song);
+                        return new Response("Media added!");
                     }
                 }
-                if (guid.equals("ERROR")) {
-                    return new Response("Error - Enter valid song name");
-                } else {
-                    this.library.addMedia(new Song(guid, artistGUID, durationMilliSeconds, songTitle));
-                }
-                break;
+                return new Response("Error - Enter valid song name");
             case "release":
-                guid = "ERROR";
-                artistGUID = "ERROR";
-                String releaseTitle = "ERROR";
-                String mediumType = "ERROR";
-                Date issueDate = new Date();
-                List<Song> songList = null;
-                for (Release r : db.csvReader.getReleaseList().values()) {
-                    if (r.getTitle().equals(req)) {
-                        guid = r.getGUID();
-                        artistGUID = r.getArtistGUID();
-                        releaseTitle = r.getTitle();
-                        mediumType = r.getMedia().toString();
-                        issueDate = r.getIssueDate();
-                        songList = r.getSongList();
+                for (Release release : db.getReleaseList().values()) {
+                    if (release.getTitle().equals(req)) {
+                        library.addMedia(release);
+                        return new Response("Media added!");
                     }
                 }
-                if (guid.equals("ERROR")) {
-                    return new Response("Error - Enter valid release name");
-                } else {
-                    this.library.addMedia(new Release(guid, artistGUID, releaseTitle, mediumType, issueDate, songList));
-                }
-                break;
+                return new Response("Error - Enter valid release name");
+            default:
+                return new Response("Error while entering media type. Type 'help;' for more details");
+
         }
-        return new Response("Media added!");
     }
 }

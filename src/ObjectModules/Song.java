@@ -34,7 +34,7 @@ public class Song implements LibraryElement {
         return songTitle;
     }
 
-    public ObjectModules.mediumType getMedia() {
+    public MediumType getMedia() {
         return null;
     }
 

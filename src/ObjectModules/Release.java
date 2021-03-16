@@ -10,11 +10,10 @@ public class Release implements LibraryElement {
     private final String artistGUID;
     private final String releaseTitle;
     private final Date issueDate;
-    private final mediumType mediumType;
+    private final MediumType mediumType;
     private final List<Song> songList;
 
     public Release(String guid, String artistGUID, String releaseTitle, String mediumType, Date issueDate, List<Song> songList) throws ParseException {
-        Date issueDate1;
         this.GUID = guid;
         this.artistGUID = artistGUID;
         this.releaseTitle = releaseTitle;
@@ -31,28 +30,28 @@ public class Release implements LibraryElement {
         this.songList = songList;
         switch (mediumType) {
             case "Digital Media":
-                this.mediumType = ObjectModules.mediumType.DIGITAL_MEDIA;
+                this.mediumType = MediumType.DIGITAL_MEDIA;
                 break;
             case "CD":
-                this.mediumType = ObjectModules.mediumType.CD;
+                this.mediumType = MediumType.CD;
                 break;
             case "12\"\" Vinyl":
-                this.mediumType = ObjectModules.mediumType.VINYL_12;
+                this.mediumType = MediumType.VINYL_12;
                 break;
             case "7\"\" Vinyl":
-                this.mediumType = ObjectModules.mediumType.VINYL_7;
+                this.mediumType = MediumType.VINYL_7;
                 break;
             case "Vinyl":
-                this.mediumType = ObjectModules.mediumType.VINYL;
+                this.mediumType = MediumType.VINYL;
                 break;
             case "Cassette":
-                this.mediumType = ObjectModules.mediumType.CASSETTE;
+                this.mediumType = MediumType.CASSETTE;
                 break;
             case "Enhanced CD":
-                this.mediumType = ObjectModules.mediumType.ENHANCED_CD;
+                this.mediumType = MediumType.ENHANCED_CD;
                 break;
             default:
-                this.mediumType = ObjectModules.mediumType.NO_TYPE;
+                this.mediumType = MediumType.NO_TYPE;
                 break;
         }
     }
@@ -77,7 +76,7 @@ public class Release implements LibraryElement {
         return issueDate;
     }
 
-    public ObjectModules.mediumType getMedia() {
+    public MediumType getMedia() {
         return mediumType;
     }
 
