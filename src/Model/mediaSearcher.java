@@ -1,11 +1,10 @@
 package Model;
 
-import ObjectModules.Media;
-import ObjectModules.mediaCollection;
+import ObjectModules.LibraryElement;
 
 import java.util.List;
 
 // Strategy Pattern: Strategy
 public interface mediaSearcher {
-    public List<Media> doSearch(String mediaName, mediaCollection collection);
+    public List<LibraryElement> doSearch(String mediaName, Object collection);
 }
