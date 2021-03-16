@@ -59,6 +59,7 @@ public class Library implements LibraryElement {
     public void rateMedia(Song song, float rating) {
         song.setRating(rating);
     }
+
     public void rateMedia(Release release, float rating) {
         release.setRating(rating);
     }
