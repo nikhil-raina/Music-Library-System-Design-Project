@@ -26,6 +26,9 @@ public class Response {
     public void makeResponse(List<LibraryElement> media) {
         if (media == null) {
             setResponse("Artist have not been implemented due to lack of data");
+        } else if (media.size() == 0) {
+            setResponse("No media in the library");
+            return;
         }
         StringBuilder response = new StringBuilder("Result...\n");
         assert media != null;
