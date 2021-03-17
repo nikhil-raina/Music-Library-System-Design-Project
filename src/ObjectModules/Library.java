@@ -77,4 +77,9 @@ public class Library implements LibraryElement {
     public List<LibraryElement> getElements() {
         return elements;
     }
+
+    public void makeLibrary(String librayString) {
+        // NEEDS TO READ THE STRING AND CONVERT IT TO A LIBRARY
+        // this.elements = List<LibraryElements> newLibrary;
+    }
 }
