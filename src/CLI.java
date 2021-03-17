@@ -1,31 +1,24 @@
 import Controller.RequestHandler;
 import Model.ActionHelp;
+import Model.Grouping;
 import ObjectModules.Library;
 import ObjectModules.Response;
 import ObjectModules.User;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.*;
 import java.text.ParseException;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CLI {
 
     public static void main(String[] args) throws IOException, ParseException {
         Scanner scan = new Scanner(System.in);
-        File file = new File("src/PersistedData/Libraries");
-        FileWriter fileWriter = new FileWriter(file);
-        GsonBuilder builder = new GsonBuilder();
-        builder.setPrettyPrinting();
-        Gson gson = builder.create();
-        Reader reader = Files.newBufferedReader(Path.of("src/PersistedData/Libraries"));
+        File file = new File("src/PersistedData/Libraries.json");
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        FileReader reader = new FileReader("src/PersistedData/Libraries.json");
 
 
         // Check to see if Libraries.json file exists, else create one
@@ -35,20 +28,33 @@ public class CLI {
         System.out.print("Enter username: ");
         String username = scan.nextLine();
 
-        User user;
+        User user = null;
 
         // Collect username and check to see if library exists for specified username
-        Map<?,?> listUsernames = gson.fromJson(reader, Map.class);
-        if (listUsernames == null || !listUsernames.containsValue(username)) {
+        JsonParser jp = new JsonParser();
+        JsonElement users = jp.parse(reader);
+        if (users == null) {
             // new user
             user = new User(0, username);
         } else {
-            // old user
-            // constructor needs to be changed accordingly
-            user = new User(0, username, new Library());    // placeholder - replace new library with parsed values from Libraries file
+            for(JsonElement eachUser: users.getAsJsonArray()) {
+                JsonObject userObj = eachUser.getAsJsonObject();
+                if(userObj.get("userName").getAsString().equalsIgnoreCase(username)) {
+                    // returning user
+                    int ID = Integer.parseInt(userObj.get("ID").getAsString());
+                    String elements = userObj.get("library").getAsString();
+                    Library lib = new Library();
+                    lib.makeLibrary(elements);
+                    user = new User(ID, username, lib);
+                } else {
+                    // new user
+                    int ID = Integer.parseInt(userObj.get("ID").getAsString());
+                    user = new User(ID + 1, username, new Library());
+                }
+            }
         }
 
-        RequestHandler requestHandler = new RequestHandler(user.getLibrary(), user.getDb());
+        RequestHandler requestHandler = new RequestHandler(user.getLibrary(), new Grouping());
         Response response;
 
 
@@ -64,7 +70,11 @@ public class CLI {
             switch (commandStream[0]) {
                 case "exit":
                     // update json file with changes
-                    fileWriter.write(gson.toJson(user));
+                    FileWriter fileWriter = new FileWriter(file);
+                    // SOMEHOW APPEND THE NEW USER WITH THE REST OF THE USERS
+                    List<User> newUser = new ArrayList<>();
+                    newUser.add(user);
+                    gson.toJson(newUser, fileWriter);
                     fileWriter.flush();
 
                     System.out.println("Thanks for using Muze Music Library System");
