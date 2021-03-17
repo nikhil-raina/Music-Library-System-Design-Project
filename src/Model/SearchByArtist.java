@@ -2,11 +2,10 @@ package Model;
 
 import ObjectModules.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // Strategy Pattern: Concrete Strategy
-public class SearchByArtist implements mediaSearcher {
+public class SearchByArtist implements MediaSearcher {
     @Override
     public List<LibraryElement> doSearch(String mediaName, Object collection) {
 //        List<LibraryElement> searchedElements = new ArrayList<>();

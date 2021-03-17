@@ -6,12 +6,12 @@ import java.util.List;
 
 // Strategy Patter: Context (describes what needs to be done)
 public class MediaList {
-    private final mediaSearcher searcher;
+    private final MediaSearcher searcher;
     private final String mediaName;
     private final Object collection;
 
 
-    public MediaList(mediaSearcher searcher, String mediaName, Object collection) {
+    public MediaList(MediaSearcher searcher, String mediaName, Object collection) {
         this.searcher = searcher;
         this.mediaName = mediaName;
         this.collection = collection;
@@ -25,7 +25,7 @@ public class MediaList {
         return collection;
     }
 
-    public mediaSearcher getSearcher() {
+    public MediaSearcher getSearcher() {
         return searcher;
     }
 

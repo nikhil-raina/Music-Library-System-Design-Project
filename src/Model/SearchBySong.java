@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Strategy Pattern: Concrete Strategy
-public class SearchBySong implements mediaSearcher {
+public class SearchBySong implements MediaSearcher {
     @Override
     public List<LibraryElement> doSearch(String mediaName, Object collection) {
         List<LibraryElement> searchedElements = new ArrayList<>();
