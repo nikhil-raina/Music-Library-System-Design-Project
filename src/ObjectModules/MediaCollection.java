@@ -1,13 +1,13 @@
 package ObjectModules;
 
-import Model.Database;
+import Model.Grouping;
 
 public class MediaCollection {
 
     private Library library;
-    private Database db;
+    private Grouping db;
 
-    public MediaCollection(Library library, Database db) {
+    public MediaCollection(Library library, Grouping db) {
         this.library = library;
         this.db = db;
     }
@@ -16,11 +16,11 @@ public class MediaCollection {
         this.library = library;
     }
 
-    public void setDb(Database db) {
+    public void setDb(Grouping db) {
         this.db = db;
     }
 
-    public Database getDb() {
+    public Grouping getDb() {
         return db;
     }
 

@@ -1,6 +1,6 @@
 package ObjectModules;
 
-import Model.Database;
+import Model.Grouping;
 import Model.Request;
 
 public class User {
@@ -13,7 +13,7 @@ public class User {
     public User(int ID, String userName) {
         this.ID = ID;
         this.userName = userName;
-        this.collection = new MediaCollection(new Library(), new Database());
+        this.collection = new MediaCollection(new Library(), new Grouping());
     }
 
     // old user
@@ -38,7 +38,7 @@ public class User {
         return getCollection().getLibrary();
     }
 
-    public Database getDb() {
+    public Grouping getDb() {
         return getCollection().getDb();
     }
 }

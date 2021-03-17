@@ -8,13 +8,13 @@ import helpers.csvReader;
 
 import java.util.HashMap;
 
-public class Database {
+public class Grouping {
     private HashMap<String, Artist> artistList;
     private HashMap<String, Release> releaseList;
     private HashMap<String, Song> songList;
 
 
-    public Database() {
+    public Grouping() {
         csvReader csvReader = new csvReader();
         csvReader.populateDB();
         this.artistList = csvReader.getArtistList();

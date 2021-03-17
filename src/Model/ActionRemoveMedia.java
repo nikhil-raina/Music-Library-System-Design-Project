@@ -17,7 +17,7 @@ public class ActionRemoveMedia implements Request {
 
     @Override
     public Response performRequest() throws ParseException {
-        Database db = this.collection.getDb();
+        Grouping db = this.collection.getDb();
         Library library = this.collection.getLibrary();
         String command = query.substring(0, (query.indexOf(";")));
         String req = query.substring((query.indexOf(";") + 1));

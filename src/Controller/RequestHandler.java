@@ -10,7 +10,7 @@ import java.text.ParseException;
 public class RequestHandler {
     private MediaCollection collection;
 
-    public RequestHandler(Library library, Database db) {
+    public RequestHandler(Library library, Grouping db) {
         collection = new MediaCollection(library, db);
     }
 

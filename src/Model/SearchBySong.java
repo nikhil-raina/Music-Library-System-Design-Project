@@ -13,10 +13,10 @@ public class SearchBySong implements MediaSearcher {
     @Override
     public List<LibraryElement> doSearch(String mediaName, Object collection) {
         List<LibraryElement> searchedElements = new ArrayList<>();
-        Database db;
+        Grouping db;
         Library library;
-        if (collection instanceof Database) {
-            db = (Database) collection;
+        if (collection instanceof Grouping) {
+            db = (Grouping) collection;
             for (Song s : db.getSongList().values()) {
                 if (s.getTitle().contains(mediaName)) {
                     searchedElements.add(s);

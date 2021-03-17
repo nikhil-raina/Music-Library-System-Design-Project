@@ -32,6 +32,6 @@ public class ActionRateMedia implements Request {
         if (didRate)
             return new Response("Media rated!");
         else
-            return new Response("Sorry, media not in the Database...");
+            return new Response("Sorry, media not in the Grouping...");
     }
 }

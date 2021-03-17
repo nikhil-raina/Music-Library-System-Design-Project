@@ -9,10 +9,10 @@ public class SearchByArtist implements MediaSearcher {
     @Override
     public List<LibraryElement> doSearch(String mediaName, Object collection) {
 //        List<LibraryElement> searchedElements = new ArrayList<>();
-//        Database db = null;
+//        Grouping db = null;
 //        Library library = null;
-//        if (collection instanceof Database) {
-//            db = (Database) collection;
+//        if (collection instanceof Grouping) {
+//            db = (Grouping) collection;
 //            for (Artist a : db.csvReader.getArtistList().values()) {
 //                if (a.getArtistName().contains(mediaName)) {
 //                    // Artist is not a Library Element
