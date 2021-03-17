@@ -44,6 +44,9 @@ public class CLI {
                     int ID = Integer.parseInt(userObj.get("ID").getAsString());
                     String elements = userObj.get("library").getAsString();
                     Library lib = new Library();
+                    ///
+                    //THIS NEEDS TO BE IMPLEMENTED!!!
+                    ///
                     lib.makeLibrary(elements);
                     user = new User(ID, username, lib);
                 } else {
