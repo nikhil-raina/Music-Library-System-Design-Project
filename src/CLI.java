@@ -16,7 +16,7 @@ import java.text.ParseException;
 import java.util.Map;
 import java.util.Scanner;
 
-public class MMLS {
+public class CLI {
 
     public static void main(String[] args) throws IOException, ParseException {
         Scanner scan = new Scanner(System.in);
