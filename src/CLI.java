@@ -41,7 +41,7 @@ public class CLI {
                 if(userObj.get("userName").getAsString().equalsIgnoreCase(username)) {
                     // returning user
                     int ID = Integer.parseInt(userObj.get("ID").getAsString());
-                    String elements = userObj.get("library").getAsString();
+                    String elements = userObj.get("library").toString();
                     Library lib = new Library();
                     ///
                     //THIS NEEDS TO BE IMPLEMENTED!!!
