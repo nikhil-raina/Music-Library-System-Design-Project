@@ -18,22 +18,21 @@ public class CLI {
         Scanner scan = new Scanner(System.in);
         File file = new File("src/PersistedData/Libraries.json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        FileReader reader = new FileReader("src/PersistedData/Libraries.json");
 
 
         // Check to see if Libraries.json file exists, else create one
         if (!file.exists()) { file.createNewFile(); }
 
+        FileReader reader = new FileReader("src/PersistedData/Libraries.json");
         System.out.println("Welcome to the Muze Music Library System \nType \"exit;\" to close this program.");
         System.out.print("Enter username: ");
         String username = scan.nextLine();
-
         User user = null;
 
         // Collect username and check to see if library exists for specified username
         JsonParser jp = new JsonParser();
         JsonElement users = jp.parse(reader);
-        if (users == null) {
+        if (users == null || users instanceof JsonNull) {
             // new user
             user = new User(0, username);
         } else {
