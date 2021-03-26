@@ -17,15 +17,6 @@ public class Release implements LibraryElement {
         this.GUID = guid;
         this.artistGUID = artistGUID;
         this.releaseTitle = releaseTitle;
-
-//        if (issueDate.length() == 4) {
-//            issueDate1 = new SimpleDateFormat("yyyy").parse(issueDate);
-//        } else if (issueDate.length() == 7) {
-//            issueDate1 = new SimpleDateFormat("yyyy-mm").parse(issueDate);
-//        } else {
-//            issueDate1 = new SimpleDateFormat("yyyy-mm-dd").parse(issueDate);
-//        }
-
         this.issueDate = issueDate;
         this.songList = songList;
         switch (mediumType) {
