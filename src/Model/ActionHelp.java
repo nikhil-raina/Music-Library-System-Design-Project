@@ -16,6 +16,7 @@ public class ActionHelp implements Request{
                 "\t\t\t\t => search; <mediaType>; <media name>; database \n" +
                 "\t\t\trate => rate; <mediaType>; <song name>(only songs); <rating>(1-5) \n" +
                 "\t\t  create => create; <collection name> \n" +
-                "\t\t\tshow => show; \n");
+                "\t\t\tshow => show; \n" +
+                "\t\t\texit => exit;");
     }
 }
