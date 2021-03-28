@@ -92,7 +92,8 @@ public class Library implements LibraryElement {
             if (elementObj.size() == RELEASE_LIMIT) {
                 getElements().add(this.makeLibraryElement(elementObj));
             } else {
-                getElements().add(new Song(elementObj.get("GUID").toString(), elementObj.get("artistGUID").toString(),
+                getElements().add(new Song(elementObj.get("GUID").toString().replace("\"", ""),
+                        elementObj.get("artistGUID").toString().replace("\"", ""),
                         Integer.parseInt(elementObj.get("durationMilliSeconds").toString()),
                         elementObj.get("songTitle").toString().replace("\"",""),
                         Float.parseFloat(elementObj.get("rating").toString())));
