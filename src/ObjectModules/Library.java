@@ -94,7 +94,8 @@ public class Library implements LibraryElement {
             } else {
                 getElements().add(new Song(elementObj.get("GUID").toString(), elementObj.get("artistGUID").toString(),
                         Integer.parseInt(elementObj.get("durationMilliSeconds").toString()),
-                        elementObj.get("songTitle").toString(), Float.parseFloat(elementObj.get("rating").toString())));
+                        elementObj.get("songTitle").toString().replace("\"",""),
+                        Float.parseFloat(elementObj.get("rating").toString())));
             }
         }
     }
