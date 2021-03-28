@@ -104,15 +104,12 @@ public class CLI {
                     fileWriter.flush();
                     System.out.println("Thanks for using Muze Music Library System");
                     System.exit(0);
-                case "help":
-                    response = new ActionHelp().performRequest();
-                    System.out.println(response.getResponse());
-                    break;
+
                 default:
                     response = requestHandler.handleRequest(command);
-                    System.out.println(response.getResponse());
                     break;
             }
+            System.out.println(response.getResponse());
         }
     }
 }
