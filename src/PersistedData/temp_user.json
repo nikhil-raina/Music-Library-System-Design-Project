@@ -1,0 +1,56 @@
+{
+  "libraryData": [
+    {
+      "ID": 2,
+      "userName": "Vlad",
+      "library": {
+        "elements": [
+          {
+            "GUID": "930ef9f6-1f75-4fa0-8b53-db31066a42a8",
+            "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+            "releaseTitle": "Wheels",
+            "issueDate": "Jan 22, 2005, 12:03:00 AM",
+            "mediumType": "DIGITAL_MEDIA",
+            "songList": [
+              {
+                "GUID": "b8637f31-44f5-499d-b1e7-18f7b92a3f58",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 200000,
+                "songTitle": "Wheels",
+                "rating": 0.0
+              },
+              {
+                "GUID": "7b76a2ea-6aaa-4591-9f55-9b1bb0dfc1fa",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 216000,
+                "songTitle": "No Phone",
+                "rating": 0.0
+              },
+              {
+                "GUID": "a3f65f77-cc00-42eb-a336-52cfd7bee22e",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 224546,
+                "songTitle": "Daria",
+                "rating": 0.0
+              },
+              {
+                "GUID": "13e1723f-3d5b-4fdd-8963-3810d2afb01b",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 175000,
+                "songTitle": "Ruby Don’t Take Your Love to Town",
+                "rating": 0.0
+              },
+              {
+                "GUID": "83a98255-7e46-4f4b-ba16-2974871c37ef",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 141000,
+                "songTitle": "Excuse Me (I Think I’ve Got a Heartache)",
+                "rating": 0.0
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
