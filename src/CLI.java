@@ -77,14 +77,8 @@ public class CLI {
 
                     // Opens the temp file to get the necessary temp JSON data of the current user
                     reader = new FileReader("src/PersistedData/temp_user.json");
-                    jsonElement = (new JsonParser()).parse(reader);
+                    jsonElement = new JsonParser().parse(reader);
                     JsonArray tempUser = jsonElement.getAsJsonObject().getAsJsonArray("libraryData");
-                    boolean result = tempFile.delete();
-                    if(result) {
-                        System.out.println("DELETE SUCCESS");
-                    } else {
-                        System.out.println("DELETE FAILED");
-                    }
                     JsonObject tUser = tempUser.get(0).getAsJsonObject();
 
                     // Searches within users to update the JsonArray
