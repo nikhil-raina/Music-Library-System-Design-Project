@@ -17,37 +17,34 @@ public class Release implements LibraryElement {
         this.GUID = guid;
         this.artistGUID = artistGUID;
         this.releaseTitle = releaseTitle;
-
-//        if (issueDate.length() == 4) {
-//            issueDate1 = new SimpleDateFormat("yyyy").parse(issueDate);
-//        } else if (issueDate.length() == 7) {
-//            issueDate1 = new SimpleDateFormat("yyyy-mm").parse(issueDate);
-//        } else {
-//            issueDate1 = new SimpleDateFormat("yyyy-mm-dd").parse(issueDate);
-//        }
-
         this.issueDate = issueDate;
         this.songList = songList;
         switch (mediumType) {
             case "Digital Media":
+            case "DIGITAL_MEDIA":
                 this.mediumType = MediumType.DIGITAL_MEDIA;
                 break;
             case "CD":
                 this.mediumType = MediumType.CD;
                 break;
             case "12\"\" Vinyl":
+            case "VINYL_12":
                 this.mediumType = MediumType.VINYL_12;
                 break;
             case "7\"\" Vinyl":
+            case "VINYL_7":
                 this.mediumType = MediumType.VINYL_7;
                 break;
             case "Vinyl":
+            case "VINYL":
                 this.mediumType = MediumType.VINYL;
                 break;
             case "Cassette":
+            case "CASSETTE":
                 this.mediumType = MediumType.CASSETTE;
                 break;
             case "Enhanced CD":
+            case "ENHANCED_CD":
                 this.mediumType = MediumType.ENHANCED_CD;
                 break;
             default:

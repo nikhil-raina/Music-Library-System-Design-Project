@@ -38,11 +38,13 @@ public class RequestHandler {
             case "show" :
                 request = new ActionShowCollection(query, collection);
                 break;
+            case "help":
+                request = new ActionHelp();
+                break;
             default:
                 return new Response("Command Error! Type 'help;' for more details.");
         }
 
-        assert request != null;
         return request.performRequest();
     }
 }

@@ -17,49 +17,33 @@ public class ActionRemoveMedia implements Request {
 
     @Override
     public Response performRequest() throws ParseException {
-        Grouping db = this.collection.getDb();
         Library library = this.collection.getLibrary();
         String command = query.substring(0, (query.indexOf(";")));
         String req = query.substring((query.indexOf(";") + 1));
 
-        // NEED TO CHANGE REQ SO ITS KEY OF SONG FOR PROPER FUNCTIONALITY
         switch (command) {
             case "song":
                 for (LibraryElement element : library.getElements()) {
-                    boolean found = false;
-                    if (element instanceof Release) {
-                        for (Song song: ((Release) element).getSongList()) {
-                            if (song.getTitle().equals(req)) {
-                                library.removeMedia(song);
-                                ((Release) element).getSongList().remove(song);
-                                found = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (found) {
-                        break;
-                    }
-                    if (element.getTitle().equals(req)) {
-                        Song song = (Song) element;
+                    Song song = (Song) element;
+                    if (song.getTitle().equals(req)) {
                         library.removeMedia(song);
-                        break;
+                        return new Response("Song removed!");
                     }
                 }
-                break;
+                return new Response("Remove fail: Song not present in the user library");
 
             case "release":
-                for (Release release : db.getReleaseList().values()) {
+                for (LibraryElement element : library.getElements()) {
+                    Release release = (Release) element;
                     if (release.getTitle().equals(req)) {
                         library.removeMedia(release);
-                        break;
+                        return new Response("Release removed!");
                     }
                 }
-                break;
+                return new Response("Remove fail: Release not present in the user library");
 
             default:
                 return new Response("Error while entering media type. Type 'help;' for more details");
         }
-        return new Response("Media removed!");
     }
 }

@@ -92,7 +92,7 @@ public class csvReader {
                 } else {
                     date = new Date();
                 }
-                releaseList.put(data[0], new Release(data[0], data[1], data[2], data[3], date, songs));
+                releaseList.put(data[0], new Release(data[0], data[1], data[2].replace("\"", ""), data[3], date, songs));
             }
 
             br.close();
@@ -109,7 +109,14 @@ public class csvReader {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(COMMA_DELIMITER);
-                songList.put(data[0], new Song(data[0], data[1], Integer.parseInt(data[2]), data[3]));
+                StringBuilder title = new StringBuilder();
+                if (data.length > 4) {
+                    for (int i = 3; i < data.length; i++) {
+                        title.append(data[i]);
+                    }
+                    data[3] = title.toString();
+                }
+                songList.put(data[0], new Song(data[0], data[1], Integer.parseInt(data[2]), data[3].replace("\"","")));
             }
 
             br.close();

@@ -1,0 +1,186 @@
+{
+  "libraryData": [
+    {
+      "ID": 0,
+      "userName": "Sam",
+      "library": {
+        "elements": [
+          {
+            "GUID": "dbebf0d3-0b65-30a5-a3be-296709c5d3df",
+            "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+            "releaseTitle": "Ramones",
+            "issueDate": "Jan 1, 1976, 12:00:00 PM",
+            "mediumType": "VINYL",
+            "songList": [
+              {
+                "GUID": "0441c372-0624-4b06-8657-24390ed557eb",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 133306,
+                "songTitle": "Blitzkrieg Bop",
+                "rating": 0.0
+              },
+              {
+                "GUID": "f6a0ffdb-13ab-4e56-8917-66afb590e7ba",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 117066,
+                "songTitle": "Havana Affair",
+                "rating": 0.0
+              },
+              {
+                "GUID": "d0404829-b11e-4a90-8144-4f1771d2c599",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 141333,
+                "songTitle": "53rd \u0026 3rd",
+                "rating": 0.0
+              },
+              {
+                "GUID": "1fb6d615-22bc-414e-b5ac-20e32032d69c",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 116400,
+                "songTitle": "Chain Saw",
+                "rating": 0.0
+              },
+              {
+                "GUID": "cdca8e22-eea5-4b0d-b01c-244ad576bd9d",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 144666,
+                "songTitle": "I Wanna Be Your Boyfriend",
+                "rating": 0.0
+              },
+              {
+                "GUID": "52ed0a5e-09b5-42a4-ad11-3e22441d1021",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 92506,
+                "songTitle": "Judy Is a Punk",
+                "rating": 0.0
+              },
+              {
+                "GUID": "aca83bac-7acc-454a-9750-0f46fae64d2e",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 96093,
+                "songTitle": "Now I Wanna Sniff Some Glue",
+                "rating": 0.0
+              },
+              {
+                "GUID": "ac25ec9a-eff9-4aa1-bcca-46b7ca62b656",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 103200,
+                "songTitle": "I Don’t Wanna Walk Around With You",
+                "rating": 0.0
+              },
+              {
+                "GUID": "7d3a2f87-13b4-4b3c-8e5c-b3cdcd8bdf13",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 152133,
+                "songTitle": "Beat on the Brat",
+                "rating": 0.0
+              },
+              {
+                "GUID": "ff293fa7-55a2-441b-893b-406f561d1f50",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 112133,
+                "songTitle": "Let’s Dance",
+                "rating": 0.0
+              },
+              {
+                "GUID": "e9068b61-4326-463b-8e3a-36f99e3d42c6",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 135066,
+                "songTitle": "Loudmouth",
+                "rating": 0.0
+              },
+              {
+                "GUID": "3747970f-aeab-440b-a85d-3aeae8bab207",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 158133,
+                "songTitle": "I Don’t Wanna Go Down to the Basement",
+                "rating": 0.0
+              },
+              {
+                "GUID": "3d6934e8-65d2-470c-9013-cd1bfb86c060",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 131066,
+                "songTitle": "Today Your Love Tomorrow the World",
+                "rating": 0.0
+              },
+              {
+                "GUID": "fec99019-ec23-4d7b-b8b9-b2e5e08501d2",
+                "artistGUID": "d6ed7887-a401-47a8-893c-34b967444d26",
+                "durationMilliSeconds": 118733,
+                "songTitle": "Listen to My Heart",
+                "rating": 0.0
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "ID": 1,
+      "userName": "Kindle",
+      "library": {
+        "elements": [
+          {
+            "GUID": "bbd1b7ad-01b0-469f-8ac6-667040a3051d",
+            "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+            "durationMilliSeconds": 210000,
+            "songTitle": "Let Me Go",
+            "rating": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "ID": 2,
+      "userName": "Vlad",
+      "library": {
+        "elements": [
+          {
+            "GUID": "930ef9f6-1f75-4fa0-8b53-db31066a42a8",
+            "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+            "releaseTitle": "Wheels",
+            "issueDate": "Jan 22, 2005, 12:03:00 AM",
+            "mediumType": "DIGITAL_MEDIA",
+            "songList": [
+              {
+                "GUID": "b8637f31-44f5-499d-b1e7-18f7b92a3f58",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 200000,
+                "songTitle": "Wheels",
+                "rating": 0.0
+              },
+              {
+                "GUID": "7b76a2ea-6aaa-4591-9f55-9b1bb0dfc1fa",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 216000,
+                "songTitle": "No Phone",
+                "rating": 0.0
+              },
+              {
+                "GUID": "a3f65f77-cc00-42eb-a336-52cfd7bee22e",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 224546,
+                "songTitle": "Daria",
+                "rating": 0.0
+              },
+              {
+                "GUID": "13e1723f-3d5b-4fdd-8963-3810d2afb01b",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 175000,
+                "songTitle": "Ruby Don’t Take Your Love to Town",
+                "rating": 0.0
+              },
+              {
+                "GUID": "83a98255-7e46-4f4b-ba16-2974871c37ef",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 141000,
+                "songTitle": "Excuse Me (I Think I’ve Got a Heartache)",
+                "rating": 0.0
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

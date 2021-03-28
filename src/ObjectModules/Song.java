@@ -18,6 +18,14 @@ public class Song implements LibraryElement {
         this.rating = 0;
     }
 
+    public Song(String guid, String artistGUID, int durationMilliSeconds, String songTitle, float rating) {
+        this.GUID = guid;
+        this.artistGUID = artistGUID;
+        this.durationMilliSeconds = durationMilliSeconds;
+        this.songTitle = songTitle;
+        this.rating = rating;
+    }
+
     public String getGUID() {
         return GUID;
     }
