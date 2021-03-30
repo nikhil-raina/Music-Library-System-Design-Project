@@ -41,6 +41,10 @@ public class RequestHandler {
             case "help":
                 request = new ActionHelp();
                 break;
+            case "online":
+                request = new ActionOnline(collection);
+                collection.setOnline();
+                break;
             default:
                 return new Response("Command Error! Type 'help;' for more details.");
         }

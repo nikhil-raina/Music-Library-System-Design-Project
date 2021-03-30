@@ -14,15 +14,28 @@ public class SearchBySong implements MediaSearcher {
     public List<LibraryElement> doSearch(String mediaName, Object collection) {
         List<LibraryElement> searchedElements = new ArrayList<>();
         Grouping db;
+        WebService dbr;
         Library library;
         if (collection instanceof Grouping) {
             db = (Grouping) collection;
+            System.out.print("GROUPING");
             for (Song s : db.getSongList().values()) {
                 if (s.getTitle().contains(mediaName)) {
                     searchedElements.add(s);
                 }
             }
-        } else {
+        }
+        else if (collection instanceof WebService) {
+            dbr = (WebService) collection;
+            System.out.print("WEBSERVICE");
+            for (Song s : dbr.getSongList(mediaName).values()) {
+                if (s.getTitle().contains(mediaName)) {
+                    searchedElements.add(s);
+                }
+            }
+        }
+
+        else {
             library = (Library) collection;
             for (LibraryElement element: library.getElements()) {
                 if (element.getTitle().equals(mediaName)) {

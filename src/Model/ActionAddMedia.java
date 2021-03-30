@@ -17,7 +17,7 @@ public class ActionAddMedia implements Request{
 
     @Override
     public Response performRequest() throws ParseException {
-        Grouping db = this.collection.getDb();
+        db db = this.collection.getDb();
         Library library = this.collection.getLibrary();
         String command = query.substring(0, (query.indexOf(";")));
         String req = query.substring((query.indexOf(";") + 1));

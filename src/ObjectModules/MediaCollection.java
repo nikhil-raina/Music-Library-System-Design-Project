@@ -1,11 +1,13 @@
 package ObjectModules;
 
 import Model.Grouping;
+import Model.WebService;
+import Model.db;
 
 public class MediaCollection {
 
     private Library library;
-    private Grouping db;
+    private db db;
 
     public MediaCollection(Library library, Grouping db) {
         this.library = library;
@@ -20,12 +22,15 @@ public class MediaCollection {
         this.db = db;
     }
 
-    public Grouping getDb() {
+    public db getDb() {
         return db;
     }
 
     public Library getLibrary() {
         return library;
+    }
+    public void setOnline(){
+        this.db = new WebService();
     }
 
 }
