@@ -14,6 +14,5 @@ public interface db {
      HashMap<String, Release> getReleaseList();
 
      HashMap<String, Song> getSongList();
-     HashMap<String, Song> getSongList(String query) throws IOException;
 
 }

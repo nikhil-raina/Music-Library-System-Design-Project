@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +19,13 @@ public class WebService implements db {
     private static final String SEARCH_URL =
             "https://musicbrainz.org/ws/2/recording?query=";
     private static final String JSON_FORMAT = "&fmt=json";
+    private HashMap<String, Song> songList = new HashMap<>();
+    private static final WebService INSTANCE = new WebService();
 
+
+    public static WebService getInstance(){
+        return INSTANCE;
+    }
     @Override
     public HashMap<String, Artist> getArtistList() {
         return null;
@@ -33,13 +38,15 @@ public class WebService implements db {
 
     @Override
     public HashMap<String, Song> getSongList() {
-        return null;
+        return this.songList;
     }
 
-    @Override
-    public HashMap<String, Song> getSongList(String query) {
+    public void searchSongList(String query) {
         Gson gson = new Gson();
         WebRecording webrecording;
+        HashMap<String, Song> newsongList = new HashMap<String,Song>();
+
+
         try {
             URL queryUrl = new URL(SEARCH_URL + query + JSON_FORMAT);
 
@@ -59,9 +66,10 @@ public class WebService implements db {
                 while ((line = reader.readLine()) != null) {
                     webrecording = gson.fromJson(line, WebRecording.class);
                     List<WebSong> recordings = webrecording.getrecordings();
+
                     for (int i = 0; i < recordings.size(); i++) {
                         System.out.print(i + 1 + ") " + recordings.get(i));
-
+                        newsongList.put(recordings.get(i).title, recordings.get(i).toSong());
                     }
                 }
             }
@@ -69,8 +77,7 @@ public class WebService implements db {
             e.printStackTrace();
             System.out.println("Connection error");
         }
-
-        return null;
+        this.songList = newsongList;
     }
 
     public static class WebRecording{
@@ -102,7 +109,11 @@ public class WebService implements db {
             public String toString(){
                 return this.title +" by " + credits.get(0).getName() + "\n";
             }
+            public Song toSong(){
+                return new Song(id, credits.get(0).getName(), length, title);
+            }
     }
+
     public static class artistcredit {
         //Repesents an artist as returned by the MusicBrainz Web Service. Used to format data from GSon.
         private String id;

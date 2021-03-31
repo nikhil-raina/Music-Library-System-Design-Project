@@ -30,7 +30,7 @@ public class MediaCollection {
         return library;
     }
     public void setOnline(){
-        this.db = new WebService();
+        this.db =  WebService.getInstance();
     }
 
 }

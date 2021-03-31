@@ -6,6 +6,7 @@ import ObjectModules.Release;
 import ObjectModules.Song;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 // Strategy Pattern: Concrete Strategy
@@ -28,7 +29,8 @@ public class SearchBySong implements MediaSearcher {
         else if (collection instanceof WebService) {
             dbr = (WebService) collection;
             System.out.print("WEBSERVICE");
-            for (Song s : dbr.getSongList(mediaName).values()) {
+            dbr.searchSongList(mediaName);
+            for (Song s : dbr.getSongList().values()) {
                 if (s.getTitle().contains(mediaName)) {
                     searchedElements.add(s);
                 }
@@ -53,7 +55,7 @@ public class SearchBySong implements MediaSearcher {
         }
 
         // Sorting via title
-        searchedElements.sort((o1, o2) -> o2.getTitle().compareTo(o2.getTitle()));
+        searchedElements.sort(Comparator.comparing(LibraryElement::getTitle));
         return searchedElements;
     }
 }
