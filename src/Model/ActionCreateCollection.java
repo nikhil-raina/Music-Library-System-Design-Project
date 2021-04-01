@@ -3,6 +3,8 @@ package Model;
 import ObjectModules.MediaCollection;
 import ObjectModules.Response;
 
+import java.text.ParseException;
+
 // Command Pattern: Concrete Command
 public class ActionCreateCollection implements Request {
 
@@ -18,6 +20,11 @@ public class ActionCreateCollection implements Request {
     public Response performRequest() {
 
         return new Response("There is no requirement for this.");
+    }
+
+    @Override
+    public Response undo() throws ParseException {
+        return null;
     }
 
 }

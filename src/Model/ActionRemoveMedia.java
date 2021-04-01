@@ -46,4 +46,10 @@ public class ActionRemoveMedia implements Request {
                 return new Response("Error while entering media type. Type 'help;' for more details");
         }
     }
+
+    @Override
+    public Response undo() throws ParseException {
+        ActionAddMedia request = new ActionAddMedia(query,collection);
+        return request.performRequest();
+    }
 }

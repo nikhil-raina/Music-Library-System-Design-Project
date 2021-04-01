@@ -5,7 +5,7 @@ import ObjectModules.*;
 import java.text.ParseException;
 
 // Command Pattern: Concrete Command
-public class ActionAddMedia implements Request{
+public class ActionAddMedia implements Request {
 
     private String query;
     private MediaCollection collection;
@@ -44,5 +44,11 @@ public class ActionAddMedia implements Request{
                 return new Response("Error while entering media type. Type 'help;' for more details");
 
         }
+    }
+
+    @Override
+    public Response undo() throws ParseException {
+        ActionRemoveMedia request = new ActionRemoveMedia(query,collection);
+        return request.performRequest();
     }
 }
