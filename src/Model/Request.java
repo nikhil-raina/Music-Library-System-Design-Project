@@ -11,4 +11,6 @@ public interface Request {
     public Response performRequest() throws ParseException;
 
     public Response undo() throws ParseException;
+
+    public Response redo() throws ParseException;
 }

@@ -27,7 +27,7 @@ public class ActionRateMedia implements Request {
         for (LibraryElement s : library.getElements()) {
             if (s.getTitle().equals(name)) {
                 didRate = true;
-                previousRating = s.getRating();
+                this.previousRating = s.getRating();
                 s.setRating(rating);
             }
         }
@@ -39,7 +39,12 @@ public class ActionRateMedia implements Request {
 
     @Override
     public Response undo() throws ParseException {
-        query = query.replaceAll("\\d", Float.toString(previousRating));
+        query = query.replaceAll("\\d", Float.toString(this.previousRating));
         return this.performRequest();
+    }
+
+    @Override
+    public Response redo() throws ParseException {
+        return this.undo();
     }
 }

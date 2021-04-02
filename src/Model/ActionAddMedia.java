@@ -51,4 +51,9 @@ public class ActionAddMedia implements Request {
         ActionRemoveMedia request = new ActionRemoveMedia(query,collection);
         return request.performRequest();
     }
+
+    @Override
+    public Response redo() throws ParseException {
+        return this.performRequest();
+    }
 }

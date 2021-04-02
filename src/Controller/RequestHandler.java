@@ -53,7 +53,7 @@ public class RequestHandler {
                 return new Response("Command Error! Type 'help;' for more details.");
         }
 
-        Response res = request.undo();
+        Response res = request.performRequest();
         if(res.getResponse().equals("Media added!") || res.getResponse().equals("Media removed!") || res.getResponse().equals("Media rated!")){
             x.pushToUndo(request);
         }

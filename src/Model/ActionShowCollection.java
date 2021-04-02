@@ -25,4 +25,9 @@ public class ActionShowCollection implements Request{
     public Response undo() throws ParseException {
         return null;
     }
+
+    @Override
+    public Response redo() throws ParseException {
+        return null;
+    }
 }

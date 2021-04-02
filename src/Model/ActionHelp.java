@@ -27,4 +27,9 @@ public class ActionHelp implements Request{
     public Response undo() throws ParseException {
         return null;
     }
+
+    @Override
+    public Response redo() throws ParseException {
+        return null;
+    }
 }

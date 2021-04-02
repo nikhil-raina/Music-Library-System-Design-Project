@@ -27,4 +27,9 @@ public class ActionCreateCollection implements Request {
         return null;
     }
 
+    @Override
+    public Response redo() throws ParseException {
+        return null;
+    }
+
 }

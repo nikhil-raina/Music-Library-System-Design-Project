@@ -52,4 +52,9 @@ public class ActionRemoveMedia implements Request {
         ActionAddMedia request = new ActionAddMedia(query,collection);
         return request.performRequest();
     }
+
+    @Override
+    public Response redo() throws ParseException {
+        return null;
+    }
 }

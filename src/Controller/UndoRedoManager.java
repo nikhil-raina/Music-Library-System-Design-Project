@@ -31,7 +31,7 @@ public class UndoRedoManager {
         if(!this.Redo.empty()){
             Request request = Redo.pop();
             this.pushToUndo(request);
-            return request.performRequest();
+            return request.redo();
         }
         else {
             System.out.println("Empty");
