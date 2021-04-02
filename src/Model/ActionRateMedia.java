@@ -39,7 +39,7 @@ public class ActionRateMedia implements Request {
 
     @Override
     public Response undo() throws ParseException {
-        query = query.replaceAll("\\d", Float.toString(this.previousRating));
+        query = query.replaceAll("\\f", Float.toString(this.previousRating));
         return this.performRequest();
     }
 
