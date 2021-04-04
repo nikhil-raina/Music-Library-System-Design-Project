@@ -1,9 +1,7 @@
 package ObjectModules;
 
 import java.text.ParseException;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Release implements LibraryElement {
     private final String GUID;
@@ -11,7 +9,7 @@ public class Release implements LibraryElement {
     private final String releaseTitle;
     private final Date issueDate;
     private final MediumType mediumType;
-    private final List<Song> songList;
+    private List<Song> songList;
 
     public Release(String guid, String artistGUID, String releaseTitle, String mediumType, Date issueDate, List<Song> songList) throws ParseException {
         this.GUID = guid;
@@ -80,6 +78,10 @@ public class Release implements LibraryElement {
     @Override
     public void setRating(float rating) { }
 
+    public void setSongList(ArrayList<Song> newsonglist){
+            this.songList = newsonglist;
+        }
+
     public int getDuration() {
         int total = 0;
         for (int i = 0; i < songList.size(); i++) {
@@ -96,6 +98,9 @@ public class Release implements LibraryElement {
     public String toString() {
         System.out.println("Release: " + getTitle() + ", songs:");
         int index = 1;
+        if(songList == null){
+            return "";
+        }
         for (Song song : getSongList()) {
             if(song == null){
                 break;

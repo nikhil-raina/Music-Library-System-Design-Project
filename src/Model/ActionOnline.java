@@ -15,6 +15,7 @@ public class ActionOnline implements Request {
 
     @Override
     public Response performRequest() throws ParseException {
+        collection.setOnline();
         return new Response("Switched to the Online database");
     }
 }
