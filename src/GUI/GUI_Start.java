@@ -1,6 +1,9 @@
 package GUI;
 
+import Controller.RequestHandler;
+import Model.Grouping;
 import ObjectModules.Library;
+import ObjectModules.Response;
 import ObjectModules.User;
 import com.google.gson.*;
 
@@ -23,6 +26,12 @@ public class GUI_Start extends javax.swing.JFrame {
     private javax.swing.JLabel header;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField userNameTextBox;
+
+    User user;
+    Library library;
+    RequestHandler requestHandler;
+    Response response;
+
 
     /**
      * Creates new form GUI
@@ -139,7 +148,7 @@ public class GUI_Start extends javax.swing.JFrame {
         // TODO add your handling code here:
         FileReader reader = new FileReader("src/PersistedData/Libraries.json");
 
-        User user = null;
+        user = null;
         boolean isOldUser = false;
         String username = userNameTextBox.getText();
 
@@ -154,7 +163,7 @@ public class GUI_Start extends javax.swing.JFrame {
                 JsonObject userObj = users.get(userIdx).getAsJsonObject();
                 if (userObj.get("userName").toString().replace("\"","").equalsIgnoreCase(username)) {
                     JsonArray libraryElements = userObj.get("library").getAsJsonObject().get("elements").getAsJsonArray();
-                    Library library = new Library();
+                    library = new Library();
                     library.makeLibrary(libraryElements);
                     user = new User(Integer.parseInt(userObj.get("ID").toString()), username, library);
                     isOldUser = true;
@@ -164,6 +173,8 @@ public class GUI_Start extends javax.swing.JFrame {
             if (!isOldUser)
                 user = new User(users.size(), username); // new user
         }
+        requestHandler = new RequestHandler(user.getLibrary(), new Grouping());
+
         this.setVisible(false);
         new GUI_Home().setVisible(true);
     }

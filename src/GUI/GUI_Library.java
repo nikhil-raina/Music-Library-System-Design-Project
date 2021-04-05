@@ -256,7 +256,6 @@ public class GUI_Library extends javax.swing.JFrame {
 
     private void libraryPageButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // DO NOTHING (ALREADY IN LIBRARY, DON'T NEED TO RECREATE INSTANCE OF PAGE)
-        // RATE ONLY IN LIBRARY
     }
 
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {
