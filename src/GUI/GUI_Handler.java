@@ -16,6 +16,7 @@ public class GUI_Handler {
     static GUI_Search searchPage;
     static GUI_Library libraryPage;
 
+    static String name;
 
     /**
      * @param args the command line arguments

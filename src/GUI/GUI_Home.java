@@ -118,7 +118,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
         welcomeText.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         welcomeText.setForeground(new java.awt.Color(255, 255, 255));
-        welcomeText.setText("Welcome to the Muze Music Library System");
+        welcomeText.setText("Welcome to the Muze Music Library System " + GUI_Handler.name);
 
         pageTitle1.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         pageTitle1.setForeground(new java.awt.Color(255, 255, 255));

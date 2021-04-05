@@ -170,7 +170,7 @@ public class GUI_Start extends javax.swing.JFrame {
         GUI_Handler.requestHandler = new RequestHandler(GUI_Handler.user.getLibrary(), new Grouping());
 
         this.setVisible(false);
-
+        GUI_Handler.name = userNameTextBox.getText();
         GUI_Handler.homePage = new GUI_Home();
         GUI_Handler.homePage.setVisible(true);
     }
