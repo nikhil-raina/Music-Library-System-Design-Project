@@ -1,5 +1,13 @@
 package GUI;
 
+import ObjectModules.Library;
+import ObjectModules.User;
+import com.google.gson.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.text.ParseException;
+
 /**
  * GUI Implementation for the Start page. This is the first page that
  * appears when the GUI version of MMLS is initialized. The user signs
@@ -61,7 +69,13 @@ public class GUI_Start extends javax.swing.JFrame {
         buttonSignIn.setText("Enter");
         buttonSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSignInActionPerformed(evt);
+                try {
+                    buttonSignInActionPerformed(evt);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -121,23 +135,42 @@ public class GUI_Start extends javax.swing.JFrame {
         pack();
     }
 
-    private void buttonSignInActionPerformed(java.awt.event.ActionEvent evt) {
+    private void buttonSignInActionPerformed(java.awt.event.ActionEvent evt) throws FileNotFoundException, ParseException {
         // TODO add your handling code here:
-        if(userNameTextBox.getText().equals("test")) { // TODO Replace test with list of usernames stored
-            // TODO read user from stored files and log into MMLS
-            this.setVisible(false);
-            new GUI_Home().setVisible(true);
-        } else {
-            // TODO Create new user and log into MMLS
-            this.setVisible(false);
-            new GUI_Home().setVisible(true);
+        FileReader reader = new FileReader("src/PersistedData/Libraries.json");
+
+        User user = null;
+        boolean isOldUser = false;
+        String username = userNameTextBox.getText();
+
+        JsonElement jsonElement = new JsonParser().parse(reader);
+        JsonArray users = new JsonArray();
+        if( jsonElement == null || jsonElement instanceof JsonNull) {
+            user = new User(0, username);
         }
+        else {
+            users = jsonElement.getAsJsonObject().getAsJsonArray("libraryData");
+            for (int userIdx = 0; userIdx < users.size(); userIdx++){
+                JsonObject userObj = users.get(userIdx).getAsJsonObject();
+                if (userObj.get("userName").toString().replace("\"","").equalsIgnoreCase(username)) {
+                    JsonArray libraryElements = userObj.get("library").getAsJsonObject().get("elements").getAsJsonArray();
+                    Library library = new Library();
+                    library.makeLibrary(libraryElements);
+                    user = new User(Integer.parseInt(userObj.get("ID").toString()), username, library);
+                    isOldUser = true;
+                    break;
+                }
+            }
+            if (!isOldUser)
+                user = new User(users.size(), username); // new user
+        }
+        this.setVisible(false);
+        new GUI_Home().setVisible(true);
     }
 
     private void userNameTextBoxActionPerformed(java.awt.event.ActionEvent evt) {}
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         this.setVisible(false);
         System.exit(0);
     }
