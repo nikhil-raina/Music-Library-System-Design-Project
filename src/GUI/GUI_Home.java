@@ -167,19 +167,17 @@ public class GUI_Home extends javax.swing.JFrame {
     }
 
     private void searchPageButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         this.setVisible(false);
-        new GUI_Search().setVisible(true);
+        GUI_Handler.searchPage = new GUI_Search();
+        GUI_Handler.searchPage.setVisible(true);
     }
 
     private void libraryPageButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         this.setVisible(false);
-        new GUI_Library().setVisible(true);
+        GUI_Handler.libraryPage.setVisible(true);
     }
 
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         this.setVisible(false);
         System.exit(0);
     }

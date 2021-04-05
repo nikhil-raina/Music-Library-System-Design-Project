@@ -1,5 +1,9 @@
 package GUI;
 
+import ObjectModules.Song;
+
+import java.text.ParseException;
+
 /**
  * GUI implementation for add media popup.
  *
@@ -57,7 +61,11 @@ public class GUI_AddMedia extends javax.swing.JFrame {
         buttonAdd.setText("Add");
         buttonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddActionPerformed(evt);
+                try {
+                    buttonAddActionPerformed(evt);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -124,17 +132,18 @@ public class GUI_AddMedia extends javax.swing.JFrame {
         pack();
     }
 
-    private void addMediaTextBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
+    private void addMediaTextBoxActionPerformed(java.awt.event.ActionEvent evt) {}
 
-    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-
+    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
+        StringBuilder cmd = new StringBuilder();
+        cmd.append("add;");
+        cmd.append(mediaType.getSelectedItem().toString().toLowerCase() + ";");
+        cmd.append(addMediaTextBox.getText() + ";");
+        GUI_Handler.requestHandler.handleRequest(cmd.toString());
+        this.setVisible(false);
     }
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         this.setVisible(false);
     }
 

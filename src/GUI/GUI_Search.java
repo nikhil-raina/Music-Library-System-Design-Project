@@ -1,5 +1,11 @@
 package GUI;
 
+import ObjectModules.LibraryElement;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * GUI implementation for the Search page. Users can search for media
  * using the provided search bar and search type list. After clicking
@@ -77,7 +83,11 @@ public class GUI_Search extends javax.swing.JFrame {
         actionSearchButton.setToolTipText("");
         actionSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actionSearchButtonActionPerformed(evt);
+                try {
+                    actionSearchButtonActionPerformed(evt);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -255,7 +265,7 @@ public class GUI_Search extends javax.swing.JFrame {
     private void libraryPageButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         this.setVisible(false);
-        new GUI_Library().setVisible(true);
+        GUI_Handler.libraryPage.setVisible(true);
     }
 
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,20 +274,24 @@ public class GUI_Search extends javax.swing.JFrame {
         System.exit(0);
     }
 
-    private void actionSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void actionSearchButtonActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
         // TODO add your handling code here:
+        StringBuilder cmd = new StringBuilder();
+        cmd.append("search;");
+        cmd.append(searchSelector.getSelectedItem().toString().toLowerCase() + ";");
+        cmd.append(searchTextBox.getText() + ";");
+        String[] results = GUI_Handler.requestHandler.handleRequest(cmd.toString()).getResponse().split("\n");
+        searchResultsList.setListData(Arrays.copyOfRange(results, 1, results.length));
     }
 
-    private void searchTextBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
+    private void searchTextBoxActionPerformed(java.awt.event.ActionEvent evt) { }
 
     private void undoButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        // IMPLEMENTATION NOT APART OF R1
     }
 
     private void redoButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        // IMPLEMENTATION NOT APART OF R1
     }
 
     /**

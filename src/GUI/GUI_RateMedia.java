@@ -1,5 +1,7 @@
 package GUI;
 
+import java.text.ParseException;
+
 /**
  * GUI implementation for rate media popup.
  *
@@ -57,7 +59,11 @@ public class GUI_RateMedia extends javax.swing.JFrame {
         buttonRate.setText("Rate");
         buttonRate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRateActionPerformed(evt);
+                try {
+                    buttonRateActionPerformed(evt);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -125,17 +131,18 @@ public class GUI_RateMedia extends javax.swing.JFrame {
         pack();
     }
 
-    private void rateMediaTextBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
+    private void rateMediaTextBoxActionPerformed(java.awt.event.ActionEvent evt) { }
 
-    private void buttonRateActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-
+    private void buttonRateActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
+        StringBuilder cmd = new StringBuilder();
+        cmd.append("rate;");
+        cmd.append(rateMediaTextBox.getText() + ";");
+        cmd.append(mediaRating.getSelectedItem().toString().toLowerCase() + ";");
+        GUI_Handler.requestHandler.handleRequest(cmd.toString());
+        this.setVisible(false);
     }
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         this.setVisible(false);
     }
 

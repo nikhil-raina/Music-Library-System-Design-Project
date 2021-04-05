@@ -1,5 +1,7 @@
 package GUI;
 
+import java.text.ParseException;
+
 /**
  * GUI implementation for remove media pop up.
  *
@@ -57,7 +59,11 @@ public class GUI_RemoveMedia extends javax.swing.JFrame {
         buttonRemove.setText("Remove");
         buttonRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRemoveActionPerformed(evt);
+                try {
+                    buttonRemoveActionPerformed(evt);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -124,17 +130,18 @@ public class GUI_RemoveMedia extends javax.swing.JFrame {
         pack();
     }
 
-    private void removeMediaTextBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
+    private void removeMediaTextBoxActionPerformed(java.awt.event.ActionEvent evt) { }
 
-    private void buttonRemoveActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-
+    private void buttonRemoveActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
+        StringBuilder cmd = new StringBuilder();
+        cmd.append("remove;");
+        cmd.append(mediaType.getSelectedItem().toString().toLowerCase() + ";");
+        cmd.append(removeMediaTextBox.getText() + ";");
+        GUI_Handler.requestHandler.handleRequest(cmd.toString());
+        this.setVisible(false);
     }
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         this.setVisible(false);
     }
 

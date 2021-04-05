@@ -1,5 +1,10 @@
 package GUI;
 
+import ObjectModules.LibraryElement;
+import ObjectModules.Song;
+import ObjectModules.Release;
+
+
 /**
  * GUI implementation for the Library page. Users can view their
  * current library by clicking on the button on the sidebar. All
@@ -22,6 +27,7 @@ public class GUI_Library extends javax.swing.JFrame {
     private javax.swing.JPanel sidebar;
     private javax.swing.JButton signOutButton;
     private javax.swing.JButton undoButton;
+    private javax.swing.JButton updateButton;
 
     /**
      * Creates new form GUI_Library
@@ -41,6 +47,7 @@ public class GUI_Library extends javax.swing.JFrame {
         pageTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         elementsInLibrary = new javax.swing.JList<>();
+        updateButton = new javax.swing.JButton();
         sidebar = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         searchPageButton = new javax.swing.JButton();
@@ -65,8 +72,20 @@ public class GUI_Library extends javax.swing.JFrame {
         elementsInLibrary.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(elementsInLibrary);
 
+        updateButton.setBackground(new java.awt.Color(24, 24, 24));
+        updateButton.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setText("Update");
+        updateButton.setToolTipText("");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
         mainPane.setLayer(pageTitle, javax.swing.JLayeredPane.DEFAULT_LAYER);
         mainPane.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mainPane.setLayer(updateButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout mainPaneLayout = new javax.swing.GroupLayout(mainPane);
         mainPane.setLayout(mainPaneLayout);
@@ -77,17 +96,20 @@ public class GUI_Library extends javax.swing.JFrame {
                                 .addGroup(mainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(mainPaneLayout.createSequentialGroup()
                                                 .addComponent(pageTitle)
-                                                .addGap(0, 569, Short.MAX_VALUE))
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(updateButton))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
                                 .addContainerGap())
         );
         mainPaneLayout.setVerticalGroup(
                 mainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(mainPaneLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(pageTitle)
+                                .addGroup(mainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(pageTitle)
+                                        .addComponent(updateButton))
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
@@ -215,7 +237,7 @@ public class GUI_Library extends javax.swing.JFrame {
                                 .addComponent(searchPageButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(libraryPageButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
                                 .addComponent(addMediaButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(removeMediaButton)
@@ -249,9 +271,9 @@ public class GUI_Library extends javax.swing.JFrame {
     }
 
     private void searchPageButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         this.setVisible(false);
-        new GUI_Search().setVisible(true);
+        GUI_Handler.searchPage = new GUI_Search();
+        GUI_Handler.searchPage.setVisible(true);
     }
 
     private void libraryPageButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,34 +281,39 @@ public class GUI_Library extends javax.swing.JFrame {
     }
 
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         this.setVisible(false);
         System.exit(0);
     }
 
     private void addMediaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         new GUI_AddMedia().setVisible(true);
     }
 
     private void removeMediaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         new GUI_RemoveMedia().setVisible(true);
     }
 
     private void rateMediaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         new GUI_RateMedia().setVisible(true);
     }
 
     private void undoButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-
+        // IMPLEMENTATION NOT APART OF R1
     }
 
     private void redoButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        // IMPLEMENTATION NOT APART OF R1
+    }
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        String[] listData = new String[GUI_Handler.user.library.getElements().size()];
+        int index = 0;
+        for (LibraryElement element : GUI_Handler.user.library.getElements()) {
+            listData[index] = new StringBuilder().append("Title: " + element.getTitle() + " Duration: " +
+                        element.getDuration()).toString();
+        }
+        this.elementsInLibrary.setListData(listData);
     }
 
     /**
@@ -295,7 +322,7 @@ public class GUI_Library extends javax.swing.JFrame {
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

@@ -27,12 +27,6 @@ public class GUI_Start extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField userNameTextBox;
 
-    User user;
-    Library library;
-    RequestHandler requestHandler;
-    Response response;
-
-
     /**
      * Creates new form GUI
      */
@@ -148,14 +142,14 @@ public class GUI_Start extends javax.swing.JFrame {
         // TODO add your handling code here:
         FileReader reader = new FileReader("src/PersistedData/Libraries.json");
 
-        user = null;
+        GUI_Handler.user = null;
         boolean isOldUser = false;
         String username = userNameTextBox.getText();
 
         JsonElement jsonElement = new JsonParser().parse(reader);
         JsonArray users = new JsonArray();
         if( jsonElement == null || jsonElement instanceof JsonNull) {
-            user = new User(0, username);
+            GUI_Handler.user = new User(0, username);
         }
         else {
             users = jsonElement.getAsJsonObject().getAsJsonArray("libraryData");
@@ -163,20 +157,22 @@ public class GUI_Start extends javax.swing.JFrame {
                 JsonObject userObj = users.get(userIdx).getAsJsonObject();
                 if (userObj.get("userName").toString().replace("\"","").equalsIgnoreCase(username)) {
                     JsonArray libraryElements = userObj.get("library").getAsJsonObject().get("elements").getAsJsonArray();
-                    library = new Library();
-                    library.makeLibrary(libraryElements);
-                    user = new User(Integer.parseInt(userObj.get("ID").toString()), username, library);
+                    GUI_Handler.library = new Library();
+                    GUI_Handler.library.makeLibrary(libraryElements);
+                    GUI_Handler.user = new User(Integer.parseInt(userObj.get("ID").toString()), username, GUI_Handler.library);
                     isOldUser = true;
                     break;
                 }
             }
             if (!isOldUser)
-                user = new User(users.size(), username); // new user
+                GUI_Handler.user = new User(users.size(), username); // new user
         }
-        requestHandler = new RequestHandler(user.getLibrary(), new Grouping());
+        GUI_Handler.requestHandler = new RequestHandler(GUI_Handler.user.getLibrary(), new Grouping());
 
         this.setVisible(false);
-        new GUI_Home().setVisible(true);
+
+        GUI_Handler.homePage = new GUI_Home();
+        GUI_Handler.homePage.setVisible(true);
     }
 
     private void userNameTextBoxActionPerformed(java.awt.event.ActionEvent evt) {}
