@@ -8,15 +8,20 @@ package GUI;
  * @author Brandon
  */
 public class GUI_Library extends javax.swing.JFrame {
+    private javax.swing.JButton addMediaButton;
     private javax.swing.JList<String> elementsInLibrary;
     private javax.swing.JLabel header;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton libraryPageButton;
     private javax.swing.JDesktopPane mainPane;
     private javax.swing.JLabel pageTitle;
+    private javax.swing.JButton rateMediaButton;
+    private javax.swing.JButton redoButton;
+    private javax.swing.JButton removeMediaButton;
     private javax.swing.JButton searchPageButton;
     private javax.swing.JPanel sidebar;
     private javax.swing.JButton signOutButton;
+    private javax.swing.JButton undoButton;
 
     /**
      * Creates new form GUI_Library
@@ -32,7 +37,6 @@ public class GUI_Library extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
         mainPane = new javax.swing.JDesktopPane();
         pageTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -42,6 +46,11 @@ public class GUI_Library extends javax.swing.JFrame {
         searchPageButton = new javax.swing.JButton();
         libraryPageButton = new javax.swing.JButton();
         signOutButton = new javax.swing.JButton();
+        undoButton = new javax.swing.JButton();
+        redoButton = new javax.swing.JButton();
+        addMediaButton = new javax.swing.JButton();
+        removeMediaButton = new javax.swing.JButton();
+        rateMediaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +87,7 @@ public class GUI_Library extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(pageTitle)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
@@ -121,6 +130,61 @@ public class GUI_Library extends javax.swing.JFrame {
             }
         });
 
+        undoButton.setBackground(new java.awt.Color(18, 18, 18));
+        undoButton.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        undoButton.setForeground(new java.awt.Color(255, 255, 255));
+        undoButton.setText("Undo");
+        undoButton.setToolTipText("");
+        undoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                undoButtonActionPerformed(evt);
+            }
+        });
+
+        redoButton.setBackground(new java.awt.Color(18, 18, 18));
+        redoButton.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        redoButton.setForeground(new java.awt.Color(255, 255, 255));
+        redoButton.setText("Redo");
+        redoButton.setToolTipText("");
+        redoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                redoButtonActionPerformed(evt);
+            }
+        });
+
+        addMediaButton.setBackground(new java.awt.Color(24, 24, 24));
+        addMediaButton.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        addMediaButton.setForeground(new java.awt.Color(255, 255, 255));
+        addMediaButton.setText("Add Media");
+        addMediaButton.setToolTipText("");
+        addMediaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMediaButtonActionPerformed(evt);
+            }
+        });
+
+        removeMediaButton.setBackground(new java.awt.Color(24, 24, 24));
+        removeMediaButton.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        removeMediaButton.setForeground(new java.awt.Color(255, 255, 255));
+        removeMediaButton.setText("Remove Media");
+        removeMediaButton.setToolTipText("");
+        removeMediaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeMediaButtonActionPerformed(evt);
+            }
+        });
+
+        rateMediaButton.setBackground(new java.awt.Color(24, 24, 24));
+        rateMediaButton.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        rateMediaButton.setForeground(new java.awt.Color(255, 255, 255));
+        rateMediaButton.setText("Rate Media");
+        rateMediaButton.setToolTipText("");
+        rateMediaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rateMediaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
         sidebar.setLayout(sidebarLayout);
         sidebarLayout.setHorizontalGroup(
@@ -131,7 +195,15 @@ public class GUI_Library extends javax.swing.JFrame {
                                         .addComponent(searchPageButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(libraryPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                        .addComponent(signOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                                        .addComponent(signOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarLayout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(redoButton)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(undoButton))
+                                        .addComponent(addMediaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(removeMediaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(rateMediaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
         sidebarLayout.setVerticalGroup(
@@ -143,7 +215,17 @@ public class GUI_Library extends javax.swing.JFrame {
                                 .addComponent(searchPageButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(libraryPageButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 464, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(addMediaButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(removeMediaButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rateMediaButton)
+                                .addGap(18, 18, 18)
+                                .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(undoButton)
+                                        .addComponent(redoButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(signOutButton)
                                 .addContainerGap())
         );
@@ -181,6 +263,31 @@ public class GUI_Library extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         System.exit(0);
+    }
+
+    private void addMediaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        new GUI_AddMedia().setVisible(true);
+    }
+
+    private void removeMediaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        new GUI_RemoveMedia().setVisible(true);
+    }
+
+    private void rateMediaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        new GUI_RateMedia().setVisible(true);
+    }
+
+    private void undoButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+
+    }
+
+    private void redoButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+
     }
 
     /**
