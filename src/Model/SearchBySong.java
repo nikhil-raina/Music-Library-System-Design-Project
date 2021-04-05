@@ -28,7 +28,6 @@ public class SearchBySong implements MediaSearcher {
         }
         else if (collection instanceof WebService) {
             dbr = (WebService) collection;
-            System.out.print("WEBSERVICE");
             dbr.searchSongList(mediaName);
             for (Song s : dbr.getSongList().values()) {
                 if (s.getTitle().contains(mediaName)) {

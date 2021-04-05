@@ -3,6 +3,9 @@ package Model;
 import ObjectModules.Artist;
 import ObjectModules.Release;
 import ObjectModules.Song;
+import WebObjects.WebReleaseList;
+import WebObjects.WebRecording;
+import WebObjects.WebTrack;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,10 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -74,12 +74,12 @@ public class WebService implements db {
                 BufferedReader reader = new BufferedReader(iReader);
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    webrecording = gson.fromJson(line, WebRecording.class);
-                    List<WebSong> recordings = webrecording.getrecordings();
+                    webrecording = gson.fromJson(line, WebObjects.WebRecording.class);
+                    List<WebObjects.WebSong> recordings = webrecording.getrecordings();
 
                     for (int i = 0; i < recordings.size(); i++) {
                         System.out.print(i + 1 + ") " + recordings.get(i));
-                        newsongList.put(recordings.get(i).title, recordings.get(i).toSong());
+                        newsongList.put(recordings.get(i).getTitle(), recordings.get(i).toSong());
                     }
                 }
             }
@@ -93,7 +93,7 @@ public class WebService implements db {
 
     public void searchReleaseList(String query) {
         Gson gson = new Gson();
-        WebReleaseList webReleaseList;
+        WebObjects.WebReleaseList webReleaseList;
         HashMap<String, Release> newreleaseList = new HashMap<>();
         query = String.join("%20", query);
 
@@ -114,11 +114,11 @@ public class WebService implements db {
                 BufferedReader reader = new BufferedReader(iReader);
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    webReleaseList = gson.fromJson(line, WebReleaseList.class);
-                    List<WebRelease> releases = webReleaseList.getRelease();
+                    webReleaseList = gson.fromJson(line, WebObjects.WebReleaseList.class);
+                    List<WebObjects.WebRelease> releases = webReleaseList.getRelease();
                     for (int i = 0; i < releases.size(); i++) {
                         System.out.print(i + 1 + ") " + releases.get(i));
-                            newreleaseList.put(releases.get(i).title, releases.get(i).toRelease());
+                            newreleaseList.put(releases.get(i).getTitle(), releases.get(i).toRelease());
                     }
                 }
 
@@ -155,11 +155,11 @@ public class WebService implements db {
                 BufferedReader reader = new BufferedReader(iReader);
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    WebRelease release = gson.fromJson(line, WebRelease.class);
-                    List<WebTrack> tracks = release.media.get(0).tracks;
+                    WebObjects.WebRelease release = gson.fromJson(line, WebObjects.WebRelease.class);
+                    List<WebObjects.WebTrack> tracks = release.getMedia().get(0).getTracks();
                     for (int i = 0; i < tracks.size(); i++) {
-                        System.out.print(i + 1 + ") " + tracks.get(i).recording.title + "\n");
-                        newsongList.add(tracks.get(i).recording.toSong(ArtistGUID));
+                        System.out.print(i + 1 + ") " + tracks.get(i).getRecording().getTitle() + "\n");
+                        newsongList.add(tracks.get(i).getRecording().toSong(ArtistGUID));
 
                     }
                 }
@@ -174,116 +174,5 @@ public class WebService implements db {
 
     }
 
-
-    public static class WebRecording{
-        //Represents a Recording as returned by the MusicBrainz Web Service. Used to format data from GSon.
-        private String created;
-        private int count;
-        private int offset;
-        private List<WebSong> recordings;
-
-        public List<WebSong> getrecordings() {
-            return this.recordings;
-        }
-
-    }
-
-    public static class WebReleaseList{
-        //Represents a Release List as returned by the MusicBrainz Web Service. Used to format data from GSon.
-        private List<WebRelease> releases;
-
-        public List<WebRelease> getRelease(){return this.releases; }
-    }
-
-
-    public static class WebSong{
-        //Represents a Song as returned by the MusicBrainz Web Service. Used to format data from GSon.
-            private String id;
-            private int score;
-            private String title;
-            private int length;
-            private String disambiguation;
-            private String video;
-            @SerializedName("artist-credit")
-            private List<artistcredit> credits;
-
-
-
-            public String toString(){
-                return this.title +" by " + credits.get(0).getName() + "\n";
-            }
-            public Song toSong(){
-                return new Song(id, credits.get(0).getName(), length, title);
-            }
-            public Song toSong(String ArtistGUID){
-                return new Song(id, ArtistGUID, length, title);
-            }
-            public void setCredits(List<artistcredit> credits){
-                this.credits = credits;
-            }
-    }
-
-    public static class artistcredit {
-        //Repesents an artist as returned by the MusicBrainz Web Service. Used to format data from GSon.
-        private String id;
-        private String name;
-        @SerializedName("sort-name")
-        private String sortname;
-        private String disambiguation;
-
-        public String getName() {
-            return name;
-        }
-    }
-    public static class WebRelease {
-        //Represents a release as returned by the MusicBrainz Web Service. Used to format data from GSon.
-        private String id;
-        private String title;
-        @SerializedName("artist-credit")
-        private List<artistcredit> credits;
-        private String date;
-        private List<WebMedium> media;
-        private String format;
-        private List<Song> songList;
-        //note that the songlist will be empty
-
-        public Release toRelease(){
-            Date newdate = null;
-            if(media.get(0).format == null){
-                media.get(0).format = "No type";
-            }
-            try {
-                if(date == null){
-                    date = "0000";
-                }
-                if (date.length() == 4) {
-                    newdate = new SimpleDateFormat("yyyy").parse(date);
-                } else if (date.length() == 7) {
-                    newdate = new SimpleDateFormat("yyyy-mm").parse(date);
-                } else if (date.length() == 10) {
-                    newdate = new SimpleDateFormat("yyyy-mm-dd").parse(date);
-
-
-                }
-                return new Release(id, credits.get(0).getName(), title, media.get(0).format, newdate, songList);
-            } catch (ParseException e) {
-                System.out.print("Date formatting error!");
-                return null;
-            }
-        }
-        public String toString(){
-            return this.title +" by " + credits.get(0).getName() + "\n";
-        }
-
-    }
-
-    public static class WebMedium{
-        private String format;
-        private List<WebTrack> tracks;
-    }
-
-    public static class WebTrack{
-        private WebSong recording;
-    }
 
 }

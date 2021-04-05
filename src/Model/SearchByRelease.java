@@ -6,6 +6,7 @@ import ObjectModules.Release;
 import ObjectModules.Song;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 // Strategy Pattern: Concrete Strategy
@@ -28,7 +29,6 @@ public class SearchByRelease implements MediaSearcher {
         }
         else if (collection instanceof WebService) {
             dbr = (WebService) collection;
-            System.out.print("WEBSERVICE");
             dbr.searchReleaseList(mediaName);
             for (Release r : dbr.getReleaseList().values()) {
                 if (r.getTitle().contains(mediaName)) {
@@ -48,7 +48,7 @@ public class SearchByRelease implements MediaSearcher {
         }
 
         // Sorting via title
-        searchedElements.sort((o1, o2) -> o2.getTitle().compareTo(o2.getTitle()));
+        searchedElements.sort(Comparator.comparing(LibraryElement::getTitle));
         return searchedElements;
     }
 }
