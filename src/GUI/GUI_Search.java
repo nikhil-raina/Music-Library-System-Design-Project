@@ -15,12 +15,14 @@ public class GUI_Search extends javax.swing.JFrame {
     private javax.swing.JButton libraryPageButton;
     private javax.swing.JDesktopPane mainPane;
     private javax.swing.JLabel pageTitle;
+    private javax.swing.JButton redoButton;
     private javax.swing.JButton searchPageButton;
     private javax.swing.JList<String> searchResultsList;
     private javax.swing.JComboBox<String> searchSelector;
     private javax.swing.JTextField searchTextBox;
     private javax.swing.JPanel sidebar;
     private javax.swing.JButton signOutButton;
+    private javax.swing.JButton undoButton;
 
     /**
      * Creates new form GUI_Search
@@ -36,7 +38,6 @@ public class GUI_Search extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
         mainPane = new javax.swing.JDesktopPane();
         pageTitle = new javax.swing.JLabel();
         searchTextBox = new javax.swing.JTextField();
@@ -49,6 +50,8 @@ public class GUI_Search extends javax.swing.JFrame {
         searchPageButton = new javax.swing.JButton();
         libraryPageButton = new javax.swing.JButton();
         signOutButton = new javax.swing.JButton();
+        undoButton = new javax.swing.JButton();
+        redoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,7 +126,7 @@ public class GUI_Search extends javax.swing.JFrame {
                                                 .addComponent(actionSearchButton)
                                                 .addComponent(searchSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
@@ -167,6 +170,28 @@ public class GUI_Search extends javax.swing.JFrame {
             }
         });
 
+        undoButton.setBackground(new java.awt.Color(18, 18, 18));
+        undoButton.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        undoButton.setForeground(new java.awt.Color(255, 255, 255));
+        undoButton.setText("Undo");
+        undoButton.setToolTipText("");
+        undoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                undoButtonActionPerformed(evt);
+            }
+        });
+
+        redoButton.setBackground(new java.awt.Color(18, 18, 18));
+        redoButton.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        redoButton.setForeground(new java.awt.Color(255, 255, 255));
+        redoButton.setText("Redo");
+        redoButton.setToolTipText("");
+        redoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                redoButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
         sidebar.setLayout(sidebarLayout);
         sidebarLayout.setHorizontalGroup(
@@ -177,7 +202,12 @@ public class GUI_Search extends javax.swing.JFrame {
                                         .addComponent(searchPageButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(libraryPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                        .addComponent(signOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                                        .addComponent(signOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarLayout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(redoButton)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(undoButton)))
                                 .addContainerGap())
         );
         sidebarLayout.setVerticalGroup(
@@ -189,7 +219,11 @@ public class GUI_Search extends javax.swing.JFrame {
                                 .addComponent(searchPageButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(libraryPageButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 464, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(undoButton)
+                                        .addComponent(redoButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(signOutButton)
                                 .addContainerGap())
         );
@@ -235,6 +269,14 @@ public class GUI_Search extends javax.swing.JFrame {
     }
 
     private void searchTextBoxActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void undoButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void redoButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
