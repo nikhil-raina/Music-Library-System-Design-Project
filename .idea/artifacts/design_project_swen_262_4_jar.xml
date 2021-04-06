@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="design-project-swen-262-4:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/design_project_swen_262_4_jar</output-path>
+    <root id="archive" name="design-project-swen-262-4.jar">
+      <element id="module-output" name="design-project-swen-262-4" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
