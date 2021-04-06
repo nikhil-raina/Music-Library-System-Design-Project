@@ -1,0 +1,170 @@
+{
+  "libraryData": [
+    {
+      "ID": 2,
+      "userName": "Vlad",
+      "library": {
+        "elements": [
+          {
+            "GUID": "930ef9f6-1f75-4fa0-8b53-db31066a42a8",
+            "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+            "releaseTitle": "Wheels",
+            "issueDate": "Jan 22, 2005, 12:03:00 PM",
+            "mediumType": "DIGITAL_MEDIA",
+            "songList": [
+              {
+                "GUID": "b8637f31-44f5-499d-b1e7-18f7b92a3f58",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 200000,
+                "songTitle": "Wheels",
+                "rating": 0.0
+              },
+              {
+                "GUID": "7b76a2ea-6aaa-4591-9f55-9b1bb0dfc1fa",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 216000,
+                "songTitle": "No Phone",
+                "rating": 0.0
+              },
+              {
+                "GUID": "a3f65f77-cc00-42eb-a336-52cfd7bee22e",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 224546,
+                "songTitle": "Daria",
+                "rating": 0.0
+              },
+              {
+                "GUID": "13e1723f-3d5b-4fdd-8963-3810d2afb01b",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 175000,
+                "songTitle": "Ruby Don’t Take Your Love to Town",
+                "rating": 0.0
+              },
+              {
+                "GUID": "83a98255-7e46-4f4b-ba16-2974871c37ef",
+                "artistGUID": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "durationMilliSeconds": 141000,
+                "songTitle": "Excuse Me (I Think I’ve Got a Heartache)",
+                "rating": 0.0
+              }
+            ]
+          },
+          {
+            "GUID": "107a76ce-b29d-42ec-9a0b-e96c7c0ffd2b",
+            "artistGUID": "Muse",
+            "releaseTitle": "Absolution",
+            "issueDate": "Jan 18, 2015, 12:09:00 AM",
+            "mediumType": "DIGITAL_MEDIA",
+            "songList": [
+              {
+                "GUID": "31a160a3-eaf9-4f2a-89ba-f9746fb475a7",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 22800,
+                "songTitle": "Intro",
+                "rating": 0.0
+              },
+              {
+                "GUID": "50509355-8685-4246-a3b8-5c832c260d65",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 252866,
+                "songTitle": "Apocalypse Please",
+                "rating": 0.0
+              },
+              {
+                "GUID": "40f04250-6d23-4f88-902c-94ef1a1dd3ed",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 236333,
+                "songTitle": "Time Is Running Out",
+                "rating": 0.0
+              },
+              {
+                "GUID": "ab3f9dac-41e5-4cf4-bf0a-b0b9516f973a",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 294826,
+                "songTitle": "Sing for Absolution",
+                "rating": 0.0
+              },
+              {
+                "GUID": "0474d9f4-991a-4b88-8f74-5fd1c83e1ee5",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 298506,
+                "songTitle": "Stockholm Syndrome",
+                "rating": 0.0
+              },
+              {
+                "GUID": "b170f439-0212-4463-9e1d-e3da906c9ae9",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 280666,
+                "songTitle": "Falling Away With You",
+                "rating": 0.0
+              },
+              {
+                "GUID": "e178ed9d-d2bc-4f2c-a732-33d5398028c4",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 37626,
+                "songTitle": "Interlude",
+                "rating": 0.0
+              },
+              {
+                "GUID": "c102891a-d4dd-442b-83b5-fa57cc6c1026",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 227266,
+                "songTitle": "Hysteria",
+                "rating": 0.0
+              },
+              {
+                "GUID": "91593967-86a0-4df8-bf63-d5123a39c265",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 262160,
+                "songTitle": "Blackout",
+                "rating": 0.0
+              },
+              {
+                "GUID": "137d6675-2cb0-4ba0-926e-b6cee5d33906",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 301773,
+                "songTitle": "Butterflies \u0026 Hurricanes",
+                "rating": 0.0
+              },
+              {
+                "GUID": "4107e45b-48fe-45b1-9e92-6b6701c3484b",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 208893,
+                "songTitle": "The Small Print",
+                "rating": 0.0
+              },
+              {
+                "GUID": "a818e115-26d3-40ae-b7ee-f7f3f91ede63",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 229000,
+                "songTitle": "Endlessly",
+                "rating": 0.0
+              },
+              {
+                "GUID": "ff9c8eb7-d8e3-4eaa-8457-19df4968858d",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 191040,
+                "songTitle": "Thoughts of a Dying Atheist",
+                "rating": 0.0
+              },
+              {
+                "GUID": "b60ff03a-0afc-498b-8f4d-087a5b0a921c",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 294000,
+                "songTitle": "Ruled by Secrecy",
+                "rating": 0.0
+              },
+              {
+                "GUID": "0fb4aee1-9a4d-4b09-8313-ba8910a60c8a",
+                "artistGUID": "Muse",
+                "durationMilliSeconds": 300000,
+                "songTitle": "Fury",
+                "rating": 0.0
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
