@@ -3,6 +3,8 @@ package Model;
 import ObjectModules.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 // Command Pattern: Concrete Command
 public class ActionAddMedia implements Request {
@@ -17,7 +19,7 @@ public class ActionAddMedia implements Request {
 
     @Override
     public Response performRequest() throws ParseException {
-        Grouping db = this.collection.getDb();
+        db db = this.collection.getDb();
         Library library = this.collection.getLibrary();
         String command = query.substring(0, (query.indexOf(";")));
         String req = query.substring((query.indexOf(";") + 1));
@@ -28,15 +30,20 @@ public class ActionAddMedia implements Request {
                 for (Song song : db.getSongList().values()) {
                     if (song.getTitle().equals(req)) {
                         library.addMedia(song);
-                        return new Response("Media added!");
+                        return new Response("\nMedia added!");
                     }
                 }
                 return new Response("Error - Enter valid song name");
             case "release":
                 for (Release release : db.getReleaseList().values()) {
                     if (release.getTitle().equals(req)) {
+                        if(db instanceof WebService){
+                            System.out.print("Populating songs...\n");
+                            ArrayList<Song> songList = WebService.getInstance().populateSongs(release.getGUID(), release.getArtistGUID());
+                            release.setSongList(songList);
+                        }
                         library.addMedia(release);
-                        return new Response("Media added!");
+                        return new Response("\nMedia added!");
                     }
                 }
                 return new Response("Error - Enter valid release name");

@@ -8,7 +8,7 @@ import helpers.csvReader;
 
 import java.util.HashMap;
 
-public class Grouping {
+public class Grouping implements db {
     private HashMap<String, Artist> artistList;
     private HashMap<String, Release> releaseList;
     private HashMap<String, Song> songList;
@@ -32,5 +32,9 @@ public class Grouping {
 
     public HashMap<String, Song> getSongList() {
         return songList;
+    }
+
+    public HashMap<String, Song> getSongList(String query) {
+        return null;
     }
 }
