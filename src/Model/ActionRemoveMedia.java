@@ -3,6 +3,7 @@ package Model;
 import ObjectModules.*;
 
 import java.text.ParseException;
+import java.util.List;
 
 // Command Pattern: Concrete Command
 public class ActionRemoveMedia implements Request {
@@ -24,10 +25,21 @@ public class ActionRemoveMedia implements Request {
         switch (command) {
             case "song":
                 for (LibraryElement element : library.getElements()) {
-                    Song song = (Song) element;
-                    if (song.getTitle().equals(req)) {
-                        library.removeMedia(song);
-                        return new Response("Song removed!");
+                    if (element instanceof Release) {
+                        List<Song> songList = ((Release) element).getSongList();
+                        for (Song song : songList) {
+                            if (song.getTitle().equals(req)) {
+                                songList.remove(song);
+                                return new Response("Song removed!");
+                            }
+                        }
+                    }
+                    else {
+                        Song song = (Song) element;
+                        if (song.getTitle().equals(req)) {
+                            library.removeMedia(song);
+                            return new Response("Song removed!");
+                        }
                     }
                 }
                 return new Response("Remove fail: Song not present in the user library");

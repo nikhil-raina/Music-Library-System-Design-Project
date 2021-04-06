@@ -27,10 +27,7 @@ public class ActionRateMedia implements Request {
         for (LibraryElement s : library.getElements()) {
             if (s.getTitle().equals(name)) {
                 didRate = true;
-                System.out.println("hi"+rating);
                 this.previousRating = s.getRating();
-                System.out.println("here"+previousRating);
-                System.out.println(rating);
                 s.setRating(rating);
             }
         }
@@ -42,8 +39,7 @@ public class ActionRateMedia implements Request {
 
     @Override
     public Response undo() throws ParseException {
-        System.out.println("this"+previousRating);
-        query = query.replaceAll("\\f", Float.toString(previousRating));
+        this.query = query.replaceAll("\\f", Float.toString(previousRating));
         System.out.println(query);
         return this.performRequest();
     }
