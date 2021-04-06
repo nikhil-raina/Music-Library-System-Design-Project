@@ -3,7 +3,6 @@ package GUI;
 import Controller.RequestHandler;
 import ObjectModules.Library;
 import ObjectModules.Response;
-import ObjectModules.Song;
 import ObjectModules.User;
 
 public class GUI_Handler {
@@ -14,7 +13,7 @@ public class GUI_Handler {
 
     static GUI_Home homePage;
     static GUI_Search searchPage;
-    static GUI_Library libraryPage;
+    static GUI_LibraryView libraryPage;
 
     static String name;
 
@@ -22,7 +21,7 @@ public class GUI_Handler {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        libraryPage = new GUI_Library();
+        libraryPage = new GUI_LibraryView();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Metal".equals(info.getName())) {

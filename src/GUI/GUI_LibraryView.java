@@ -1,8 +1,6 @@
 package GUI;
 
 import ObjectModules.LibraryElement;
-import ObjectModules.Song;
-import ObjectModules.Release;
 
 
 /**
@@ -12,7 +10,7 @@ import ObjectModules.Release;
  *
  * @author Brandon
  */
-public class GUI_Library extends javax.swing.JFrame {
+public class GUI_LibraryView extends javax.swing.JFrame {
     private javax.swing.JButton addMediaButton;
     private javax.swing.JList<String> elementsInLibrary;
     private javax.swing.JLabel header;
@@ -32,7 +30,7 @@ public class GUI_Library extends javax.swing.JFrame {
     /**
      * Creates new form GUI_Library
      */
-    public GUI_Library() {
+    public GUI_LibraryView() {
         initComponents();
     }
 
@@ -328,19 +326,19 @@ public class GUI_Library extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_Library.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_LibraryView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_Library.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_LibraryView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_Library.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_LibraryView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_Library.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_LibraryView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Library().setVisible(true);
+                new GUI_LibraryView().setVisible(true);
             }
         });
     }
