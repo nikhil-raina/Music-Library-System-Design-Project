@@ -2,6 +2,8 @@ package Model;
 
 import ObjectModules.*;
 
+import java.text.ParseException;
+
 // Command Pattern: Concrete Command
 public class ActionSearchMedia implements Request{
 
@@ -39,5 +41,15 @@ public class ActionSearchMedia implements Request{
         }
         response.makeResponse(mediaList.search());
         return response;
+    }
+
+    @Override
+    public Response undo() throws ParseException {
+        return null;
+    }
+
+    @Override
+    public Response redo() throws ParseException {
+        return null;
     }
 }

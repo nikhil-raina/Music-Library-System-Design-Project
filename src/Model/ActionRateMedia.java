@@ -9,6 +9,7 @@ public class ActionRateMedia implements Request {
 
     private String query;
     private MediaCollection collection;
+    private float previousRating;
 
     public ActionRateMedia(String query, MediaCollection collection) {
         this.query = query;
@@ -26,6 +27,7 @@ public class ActionRateMedia implements Request {
         for (LibraryElement s : library.getElements()) {
             if (s.getTitle().equals(name)) {
                 didRate = true;
+                this.previousRating = s.getRating();
                 s.setRating(rating);
             }
         }
@@ -33,5 +35,16 @@ public class ActionRateMedia implements Request {
             return new Response("Media rated!");
         else
             return new Response("Sorry, media not in the Grouping...");
+    }
+
+    @Override
+    public Response undo() throws ParseException {
+        query = query.replaceAll("\\f", Float.toString(this.previousRating));
+        return this.performRequest();
+    }
+
+    @Override
+    public Response redo() throws ParseException {
+        return this.undo();
     }
 }

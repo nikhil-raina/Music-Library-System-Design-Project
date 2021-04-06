@@ -3,6 +3,8 @@ package Model;
 import ObjectModules.MediaCollection;
 import ObjectModules.Response;
 
+import java.text.ParseException;
+
 // Command Pattern: Concrete Command
 public class ActionShowCollection implements Request{
 
@@ -17,5 +19,15 @@ public class ActionShowCollection implements Request{
     @Override
     public Response performRequest() {
         return this.collection.getLibrary().display();
+    }
+
+    @Override
+    public Response undo() throws ParseException {
+        return null;
+    }
+
+    @Override
+    public Response redo() throws ParseException {
+        return null;
     }
 }

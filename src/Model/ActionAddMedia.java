@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 // Command Pattern: Concrete Command
-public class ActionAddMedia implements Request{
+public class ActionAddMedia implements Request {
 
     private String query;
     private MediaCollection collection;
@@ -51,5 +51,16 @@ public class ActionAddMedia implements Request{
                 return new Response("Error while entering media type. Type 'help;' for more details");
 
         }
+    }
+
+    @Override
+    public Response undo() throws ParseException {
+        ActionRemoveMedia request = new ActionRemoveMedia(query,collection);
+        return request.performRequest();
+    }
+
+    @Override
+    public Response redo() throws ParseException {
+        return this.performRequest();
     }
 }
