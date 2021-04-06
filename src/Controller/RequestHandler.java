@@ -43,18 +43,21 @@ public class RequestHandler {
             case "help":
                 request = new ActionHelp();
                 break;
-
+            case "online":
+                request = new ActionOnline(collection);
+                break;
             //undo/redo
             case "undo" :
                 return x.Undo();
             case "redo" :
                 return x.Redo();
+            
             default:
                 return new Response("Command Error! Type 'help;' for more details.");
         }
 
         Response res = request.performRequest();
-        if(res.getResponse().equals("Media added!") || res.getResponse().equals("Media removed!") || res.getResponse().equals("Media rated!")){
+        if(res.getResponse().equals("\nMedia added!") || res.getResponse().equals("Media removed!") || res.getResponse().equals("Media rated!")){
             x.pushToUndo(request);
         }
         return res;
