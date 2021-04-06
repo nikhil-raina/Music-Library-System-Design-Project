@@ -18,4 +18,14 @@ public class ActionOnline implements Request {
         collection.setOnline();
         return new Response("Switched to the Online database");
     }
+
+    @Override
+    public Response undo() throws ParseException {
+        return null;
+    }
+
+    @Override
+    public Response redo() throws ParseException {
+        return null;
+    }
 }

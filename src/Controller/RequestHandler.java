@@ -57,7 +57,7 @@ public class RequestHandler {
         }
 
         Response res = request.performRequest();
-        if(res.getResponse().equals("Media added!") || res.getResponse().equals("Media removed!") || res.getResponse().equals("Media rated!")){
+        if(res.getResponse().equals("\nMedia added!") || res.getResponse().equals("Media removed!") || res.getResponse().equals("Media rated!")){
             x.pushToUndo(request);
         }
         return res;
